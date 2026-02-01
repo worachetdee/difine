@@ -1,10 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-// import { UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, Clock, MapPin, ChevronRight, Star, User } from "lucide-react";
 
 export default function Dashboard() {
     // Mock User
@@ -12,45 +10,45 @@ export default function Dashboard() {
     const today = new Date();
 
     return (
-        <div className="min-h-screen bg-offwhite text-charcoal font-sans">
+        <div className="min-h-screen bg-background-dark font-display text-white antialiased selection:bg-primary selection:text-white">
             {/* Dashboard Header */}
-            <header className="bg-white border-b border-gray-100 sticky top-0 z-30">
-                <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <header className="fixed top-0 left-0 right-0 z-50 bg-background-dark/85 backdrop-blur-md border-b border-white/5">
+                <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-2">
-                        <div className="relative w-8 h-8">
-                            <Image src="/logo.png" alt="DiFine" fill className="object-contain" />
+                        <div className="flex items-center justify-center size-8 rounded bg-primary/20 text-primary">
+                            <span className="material-symbols-outlined text-[20px] font-icon">restaurant_menu</span>
                         </div>
-                        <span className="font-serif font-bold text-lg text-gold tracking-wide">DiFine</span>
+                        <span className="text-white text-lg font-bold tracking-[0.1em] uppercase">DiFine</span>
                     </Link>
 
-                    <div className="flex items-center gap-6">
-                        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-charcoal/60">
-                            <Link href="/dashboard" className="text-navy">Home</Link>
-                            <Link href="/dashboard/invitations" className="hover:text-navy transition-colors">My Invitations</Link>
-                            <Link href="/dashboard/profile" className="hover:text-navy transition-colors">Profile</Link>
+                    <div className="flex items-center gap-8">
+                        <nav className="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+                            <Link href="/dashboard" className="text-white">Home</Link>
+                            <Link href="/dashboard/invitations" className="hover:text-primary transition-colors">My Invitations</Link>
+                            <Link href="/dashboard/profile" className="hover:text-primary transition-colors">Profile</Link>
                         </nav>
-                        <div className="flex items-center gap-3 pl-6 border-l border-gray-100">
+                        <div className="flex items-center gap-4 pl-6 border-l border-white/10">
                             <div className="text-right hidden sm:block">
-                                <div className="text-sm font-bold text-navy">{user.fullName}</div>
-                                <div className="text-xs text-gold font-medium uppercase tracking-wider">Diamond</div>
+                                <div className="text-sm font-bold text-white uppercase tracking-wide">{user.fullName}</div>
+                                <div className="text-[10px] text-primary font-bold uppercase tracking-[0.2em]">Diamond</div>
                             </div>
                             {/* Mock User Button */}
-                            <div className="w-8 h-8 bg-navy rounded-full flex items-center justify-center text-white">
-                                <User className="w-4 h-4" />
+                            <div className="size-8 bg-surface-dark border border-white/10 rounded-full flex items-center justify-center text-white hover:border-primary transition-colors cursor-pointer">
+                                <span className="material-symbols-outlined text-[18px] font-icon">person</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
 
-            <main className="max-w-7xl mx-auto px-6 py-12">
+            <main className="max-w-[1400px] mx-auto px-6 pt-28 pb-12">
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-10"
                 >
-                    <h1 className="text-3xl font-serif font-bold text-navy">Welcome Back, {user.firstName}</h1>
-                    <p className="text-charcoal/60 mt-1">Here is your curated experience for {today.toLocaleString('default', { month: 'long' })}.</p>
+                    <h1 className="text-3xl font-light text-white uppercase tracking-tight mb-2">Welcome Back, {user.firstName}</h1>
+                    <p className="text-gray-400 mt-1 font-light tracking-wide text-sm">Here is your curated experience for {today.toLocaleString('default', { month: 'long' })}.</p>
                 </motion.div>
 
                 {/* Hero Card: Current Invitation */}
@@ -58,10 +56,10 @@ export default function Dashboard() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="bg-navy rounded-sm overflow-hidden shadow-xl text-white mb-16 relative"
+                    className="bg-surface-dark rounded-lg overflow-hidden border border-white/10 shadow-2xl text-white mb-16 relative"
                 >
                     <div className="absolute top-0 right-0 p-6 z-20">
-                        <span className="bg-gold text-navy text-xs font-bold px-3 py-1 uppercase tracking-widest rounded-sm">Action Required</span>
+                        <span className="bg-primary text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest rounded">Action Required</span>
                     </div>
 
                     <div className="grid md:grid-cols-2">
@@ -72,46 +70,46 @@ export default function Dashboard() {
                                 fill
                                 className="object-cover"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-navy" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-surface-dark" />
                         </div>
 
                         <div className="p-8 md:p-12 flex flex-col justify-center">
                             <div className="mb-6">
-                                <div className="text-gold text-sm font-bold uppercase tracking-widest mb-2">Your February Invitation</div>
-                                <h2 className="text-4xl font-serif font-bold mb-2">L&apos;Effervescence</h2>
-                                <div className="flex items-center gap-2 text-white/70 text-sm">
-                                    <Star className="w-4 h-4 text-gold fill-gold" />
+                                <div className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-3">Your February Invitation</div>
+                                <h2 className="text-4xl font-light uppercase tracking-tight mb-3">L&apos;Effervescence</h2>
+                                <div className="flex items-center gap-2 text-white/70 text-xs tracking-wider uppercase font-bold">
+                                    <span className="material-symbols-outlined text-primary text-[16px] font-icon">star</span>
                                     <span>Michelin 2-Star</span>
-                                    <span className="w-1 h-1 bg-white/30 rounded-full" />
+                                    <span className="size-1 bg-white/30 rounded-full" />
                                     <span>French Contemporary</span>
                                 </div>
                             </div>
 
                             <div className="space-y-4 mb-8">
-                                <div className="flex items-center gap-3 text-lg">
-                                    <Calendar className="w-5 h-5 text-gold" />
+                                <div className="flex items-center gap-3 text-sm font-light text-gray-300">
+                                    <span className="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
                                     <span>Saturday, February 15 · 7:00 PM</span>
                                 </div>
-                                <div className="flex items-center gap-3 text-whit/80">
-                                    <MapPin className="w-5 h-5 text-gold" />
+                                <div className="flex items-center gap-3 text-sm font-light text-gray-300">
+                                    <span className="material-symbols-outlined text-primary text-[20px]">location_on</span>
                                     <span>Nishi-Azabu, Tokyo</span>
                                 </div>
-                                <div className="flex items-center gap-3 text-white/60 text-sm mt-4 p-3 bg-white/5 rounded-sm">
-                                    <span className="text-gold font-bold">Course:</span> &quot;Winter Awakening&quot; — 8 courses
+                                <div className="flex items-center gap-3 text-gray-400 text-xs mt-4 p-3 bg-white/5 rounded border border-white/5">
+                                    <span className="text-primary font-bold uppercase tracking-wider">Course:</span> &quot;Winter Awakening&quot; — 8 courses
                                 </div>
                             </div>
 
                             <div className="flex flex-wrap gap-4">
-                                <Link href="/dashboard/invitation/123" className="px-6 py-3 bg-gold text-navy font-bold rounded-sm hover:bg-gold-light transition-colors">
+                                <Link href="/dashboard/invitation/123" className="px-8 py-3 bg-primary text-white font-bold text-xs uppercase tracking-widest rounded hover:bg-primary-hover transition-colors">
                                     View Details
                                 </Link>
-                                <Link href="/dashboard/invitation/123/accept" className="px-6 py-3 border border-white/20 text-white font-medium rounded-sm hover:bg-white/10 transition-colors">
+                                <Link href="/dashboard/invitation/123/accept" className="px-8 py-3 border border-white/20 text-white font-bold text-xs uppercase tracking-widest rounded hover:bg-white/5 transition-colors">
                                     Accept Invitation
                                 </Link>
                             </div>
 
-                            <div className="mt-6 text-white/40 text-xs flex items-center gap-2">
-                                <Clock className="w-3 h-3" /> Please respond by February 8
+                            <div className="mt-6 text-gray-500 text-[10px] uppercase tracking-widest flex items-center gap-2 font-bold">
+                                <span className="material-symbols-outlined text-[14px]">schedule</span> Please respond by February 8
                             </div>
                         </div>
                     </div>
@@ -134,7 +132,7 @@ export default function Dashboard() {
                     <DashboardCard
                         title="Your Profile"
                         subtitle="Update dietary preferences"
-                        image="/images/ingredients.jpg"
+                        image="/images/restaurant-interior.jpg"
                         link="/dashboard/profile"
                     />
                 </div>
@@ -145,14 +143,14 @@ export default function Dashboard() {
 
 function DashboardCard({ title, subtitle, image, link }: any) {
     return (
-        <Link href={link} className="group relative h-64 rounded-sm overflow-hidden block">
+        <Link href={link} className="group relative h-64 rounded-lg overflow-hidden block border border-white/10 shadow-lg">
             <Image src={image} alt={title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-navy/40 group-hover:bg-navy/30 transition-colors" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-navy to-transparent">
-                <h3 className="text-xl font-serif font-bold text-white mb-1 group-hover:text-gold transition-colors flex items-center gap-2">
-                    {title} <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0" />
+            <div className="absolute inset-0 bg-background-dark/60 group-hover:bg-background-dark/40 transition-colors" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background-dark to-transparent">
+                <h3 className="text-xl font-bold text-white mb-1 uppercase tracking-wide group-hover:text-primary transition-colors flex items-center gap-2">
+                    {title} <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0 text-[20px]">chevron_right</span>
                 </h3>
-                <p className="text-sm text-white/70">{subtitle}</p>
+                <p className="text-xs text-gray-300 uppercase tracking-wider">{subtitle}</p>
             </div>
         </Link>
     )

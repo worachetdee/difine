@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, X } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 
 const plans = [
@@ -54,22 +53,24 @@ const plans = [
 
 export default function MembershipPage() {
     return (
-        <div className="min-h-screen bg-obsidian text-white pt-24 pb-12">
+        <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-background-dark font-display text-white antialiased selection:bg-primary selection:text-white pt-24 pb-12">
             <Navbar />
 
             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-16">
-                    <motion.h1
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl font-serif font-bold mb-4"
+                        className="flex flex-col items-center gap-4"
                     >
-                        Select Your <span className="text-gold">Status</span>
-                    </motion.h1>
-                    <p className="text-silver/60 max-w-2xl mx-auto">
-                        Choose the level of access that suits your lifestyle.
-                        All memberships include our core promise of excellence.
-                    </p>
+                        <h1 className="text-4xl md:text-6xl font-light uppercase tracking-tight mb-4">
+                            Select Your <span className="text-primary font-bold">Status</span>
+                        </h1>
+                        <p className="text-gray-400 max-w-2xl mx-auto font-light leading-relaxed tracking-wide">
+                            Choose the level of access that suits your lifestyle.
+                            All memberships include our core promise of excellence.
+                        </p>
+                    </motion.div>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8">
@@ -79,40 +80,40 @@ export default function MembershipPage() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className={`relative p-8 rounded-2xl border ${plan.recommended
-                                    ? "border-gold bg-gold/5 shadow-[0_0_30px_rgba(212,175,55,0.1)]"
-                                    : "border-white/10 bg-white/5"
+                            className={`relative p-8 rounded-lg border ${plan.recommended
+                                    ? "border-primary bg-surface-lighter shadow-[0_0_30px_rgba(141,127,104,0.1)]"
+                                    : "border-white/10 bg-surface-dark"
                                 }`}
                         >
                             {plan.recommended && (
-                                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gold text-obsidian text-xs font-bold uppercase tracking-wider rounded-full">
+                                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-white text-[10px] font-bold uppercase tracking-widest rounded">
                                     Most Popular
                                 </div>
                             )}
 
-                            <h3 className="text-2xl font-serif font-bold mb-2">{plan.name}</h3>
+                            <h3 className="text-2xl font-bold uppercase tracking-wide mb-2 text-white">{plan.name}</h3>
                             <div className="flex items-baseline mb-8">
-                                <span className="text-4xl font-bold text-gold">{plan.price}</span>
-                                <span className="text-silver/50 ml-2">{plan.period}</span>
+                                <span className={`text-4xl font-light ${plan.recommended ? 'text-primary' : 'text-white'}`}>{plan.price}</span>
+                                <span className="text-gray-500 ml-2 text-sm uppercase tracking-wider">{plan.period}</span>
                             </div>
 
                             <ul className="space-y-4 mb-8">
                                 {plan.features.map((feature) => (
-                                    <li key={feature} className="flex items-start gap-3 text-silver/80 text-sm">
-                                        <Check className="w-5 h-5 text-gold shrink-0" />
+                                    <li key={feature} className="flex items-start gap-3 text-gray-300 text-sm font-light">
+                                        <span className="material-symbols-outlined text-[18px] text-primary shrink-0">check_circle</span>
                                         <span>{feature}</span>
                                     </li>
                                 ))}
                                 {plan.notIncluded.map((feature) => (
-                                    <li key={feature} className="flex items-start gap-3 text-white/20 text-sm">
-                                        <X className="w-5 h-5 shrink-0" />
+                                    <li key={feature} className="flex items-start gap-3 text-gray-600 text-sm font-light">
+                                        <span className="material-symbols-outlined text-[18px] shrink-0">close</span>
                                         <span>{feature}</span>
                                     </li>
                                 ))}
                             </ul>
 
-                            <button className={`w-full py-3 rounded-lg font-semibold transition-all ${plan.recommended
-                                    ? "bg-gold text-obsidian hover:bg-gold-light"
+                            <button className={`w-full py-4 rounded font-bold text-xs uppercase tracking-widest transition-all ${plan.recommended
+                                    ? "bg-primary text-white hover:bg-primary-hover"
                                     : "bg-white/10 hover:bg-white/20 text-white"
                                 }`}>
                                 Apply for {plan.name}
