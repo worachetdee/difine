@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Le Miroir - Fine Dining</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8d7f68",
+                        "primary-hover": "#7a6d58",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#1b1917",
+                        "surface-dark": "#262523",
+                        "surface-border": "#32312f",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1b1917; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #32312f; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8d7f68; 
+        }
+        
+        .glass-panel {
+            background: rgba(38, 37, 35, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display antialiased text-white selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<nav class="sticky top-0 z-50 w-full border-b border-surface-border bg-background-dark/95 backdrop-blur-md">
+<div class="px-6 md:px-10 lg:px-40 flex items-center justify-between py-4">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined text-2xl">diamond</span>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-wide">Le Miroir</h2>
+</div>
+<div class="hidden lg:flex items-center gap-10">
+<a class="text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="#">Menu</a>
+<a class="text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="#">Private Dining</a>
+<a class="text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="#">Events</a>
+<a class="text-gray-300 hover:text-primary transition-colors text-sm font-medium" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="lg:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden lg:block bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-surface-border" data-alt="Profile avatar of current user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBM75_yV8ctmPAU7eM7HQ7cvZelp4MNbwOdRzzvDuJsG7-w4_CdBKbzpCiJg_Lo1lV2rJAR9us7cbk7ueFlx4ij4nVS8nt6v4QHc8bN2jTdwOdNVKX9k0JGhIiOY4IlL867KA0cl-Ma6Wb13H75_d-PaQS3Onjt-6mbIXbh4wwWR-zzVAkjmK7bvJ-eXpGITh7ACs4iavQOKZM800I3wkrs4dmTjrxxBGiFnq4eP67etam3r1YUBCrBOhs8Xi_XE_dAxjMV9Ap2qfzG");'>
+</div>
+</div>
+</div>
+</nav>
+<!-- Hero / Cinematic Background -->
+<div class="relative w-full h-[60vh] lg:h-[70vh] overflow-hidden group">
+<!-- Background Image simulating Video -->
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105" data-alt="Cinematic dark moody shot of a chef plating a gourmet dish with gold tweezers" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALDhqzszrjCbh9yj7X6zLdWlW5H13sJoMvjev79lTyApmk_Ivrw6lCpMACLitzJGp82gyz16OyEGXJA_C1cY38yXgNCEvFSWK7ehlzm_cBhIn583JmpPGC8UO4I-_Y1io0rxY6Us_Jxhk7iux7jKYCwI5yOJl_XfBVMXG0Lo8mkiVRLh-ooaZ4QrraHJfaQHcND_VHC7oZeMTMfOZLsXRwriFevc32on4iD4tiJw8w5tWybQ5B3cD_GvOQKpOYlEYdubKN3fGcVB9d");'>
+</div>
+<!-- Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent"></div>
+<!-- Content -->
+<div class="absolute inset-0 flex flex-col justify-end pb-20 px-6 md:px-10 lg:px-40">
+<div class="max-w-[960px] w-full mx-auto">
+<div class="flex flex-col gap-2 animate-fade-in-up">
+<span class="text-primary font-medium tracking-[0.2em] uppercase text-sm">Fine Dining Experience</span>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-2">Le Miroir</h1>
+<div class="flex items-center gap-4 text-gray-300">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-primary text-sm">star</span> Michelin Star</span>
+<span class="size-1 bg-gray-500 rounded-full"></span>
+<span>Modern French</span>
+<span class="size-1 bg-gray-500 rounded-full"></span>
+<span>$$$$</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Layout -->
+<main class="flex-1 w-full px-6 md:px-10 lg:px-40 pb-20 -mt-10 relative z-10">
+<div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Left Column: Story & Menu -->
+<div class="lg:col-span-8 flex flex-col gap-16">
+<!-- Story Section -->
+<section>
+<div class="flex flex-col gap-6">
+<h2 class="text-3xl font-bold text-white flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+                            A Symphony of Taste
+                        </h2>
+<div class="prose prose-invert prose-lg text-gray-300 font-body leading-relaxed">
+<p>
+<span class="text-5xl float-left mr-3 mt-[-10px] text-primary font-display font-bold">N</span>estled in the heart of the city, Le Miroir offers an intimate dining experience where traditional French techniques meet modern innovation. Executive Chef Julian Cote presents a seasonal narrative through ingredients sourced from local artisans.
+                            </p>
+<p class="mt-4">
+                                Every dish is constructed with the precision of a jeweler, ensuring that flavor profiles are balanced to perfection. The ambiance reflects this philosophy—dark, moody, and illuminated by the subtle glint of gold and brass, mirroring the culinary excellence on your plate.
+                            </p>
+</div>
+</div>
+</section>
+<!-- Menu Highlights -->
+<section>
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold text-white">Menu Highlights</h3>
+<button class="text-sm text-primary hover:text-white transition-colors uppercase tracking-wider font-bold flex items-center gap-1">
+                            Full Menu <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid gap-6">
+<!-- Menu Item 1 -->
+<div class="group flex gap-4 p-4 rounded-xl hover:bg-surface-dark/50 transition-colors border border-transparent hover:border-surface-border">
+<div class="size-20 shrink-0 rounded-lg bg-cover bg-center" data-alt="Foie Gras Terrine with fig jam" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLjfCw4BnDUWjIeroMcMwAqvQpl7UbF2r_pq13Y43ohCXmKzRadg6iYoXU5PPe5Qw6Fy1q_Nt3RE4xWiAhnNl1tBanJZaU9jf49nOO1aplH021IN-ZaDIEg22ykNExHxeFOV3C2Zuu2MqolY5OINK2L1vCSLV_kLgXNUn2K5IXidWdan1OA1tkmZRn1dettkwvLaG-hQsgmN84TG8clgeUkg3OlgHZTDp46UyyH7OR4IZ2Mb3TbGUCkcj7FB1rrh-WLgomZRAdUlmn");'></div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex justify-between items-baseline mb-1">
+<h4 class="text-lg font-bold text-white group-hover:text-primary transition-colors">Foie Gras Terrine</h4>
+<span class="text-primary font-bold">$45</span>
+</div>
+<p class="text-gray-400 text-sm">Fig jam, toasted brioche, aged balsamic reduction.</p>
+</div>
+</div>
+<!-- Menu Item 2 -->
+<div class="group flex gap-4 p-4 rounded-xl hover:bg-surface-dark/50 transition-colors border border-transparent hover:border-surface-border">
+<div class="size-20 shrink-0 rounded-lg bg-cover bg-center" data-alt="Pan seared scallops with truffle foam" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBF_Eg2dLeUlN-fespy67DxG0bG_t4HxFOToCTMCyJ-9wfbG8NMIaBsqvAHIpTVFgqmh-QlJU_fB_CF5j6vNUYg_NPbdUtyYfjwa1_q_xulDXgOVhJ-5SFr5DuWdQT32mnu3xB0TV0rMWdd4o_npY5oh0VB2sfUXdgj-NpozA3iW4iUqW3RHo-y3cFQvFp_flS9tNvPmWT3J-LGVy7cXRRcS9xpYQZiPzr0i7_K8P-WVGZO1_2OFid2Da7FKQzffuZbiE77AoGx3BAU");'></div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex justify-between items-baseline mb-1">
+<h4 class="text-lg font-bold text-white group-hover:text-primary transition-colors">Coquilles Saint-Jacques</h4>
+<span class="text-primary font-bold">$52</span>
+</div>
+<p class="text-gray-400 text-sm">Diver scallops, truffle foam, parsnip purée, crispy sage.</p>
+</div>
+</div>
+<!-- Menu Item 3 -->
+<div class="group flex gap-4 p-4 rounded-xl hover:bg-surface-dark/50 transition-colors border border-transparent hover:border-surface-border">
+<div class="size-20 shrink-0 rounded-lg bg-cover bg-center" data-alt="Wagyu Beef Filet with red wine jus" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuArZU9Q5zhopDM2QzhUAK8Qejb2e9sTfiMOBcasPAgOHK8uk0FWq2jscRH0sMrTvVG81Uai5FcH29CK5Nd2-FcAV-DVisuLGgXoj5D9LtjSDb0j5cBoaXdy_ypBNfNZiIRF1N9eSsnV7iLFcfUwqAJ32EPA1bGw7Umak59FI7i3jy3XotGqmICSjzX8qADmw2EFjnbLdtYlsd6rcH19py39f3zkbXSZ4QB96lM5-gYuypk1RuncHaB2--hoyRmY3iV8U_VNXk_gFeyy");'></div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex justify-between items-baseline mb-1">
+<h4 class="text-lg font-bold text-white group-hover:text-primary transition-colors">A5 Wagyu Filet</h4>
+<span class="text-primary font-bold">$120</span>
+</div>
+<p class="text-gray-400 text-sm">Pommes dauphine, chanterelle mushrooms, bordelaise sauce.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Gallery -->
+<section>
+<h3 class="text-2xl font-bold text-white mb-8">The Atmosphere</h3>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[200px]">
+<div class="col-span-2 row-span-2 rounded-xl overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Wide shot of the dimly lit elegant dining room with chandeliers" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDI2XZHgZYDdEe426VQTt_FsAP3ZsCGz21K1yp-CkCruQrvpeRvcujEOJiCb9RDBj5qjecyAxT5xfSvjBmIggjINcQnRJatyYS7HUxbv3W_OBcUaDfgnfZsf0OQvjdKj8MI_YOcoucoh_3JrGUZTi-Kxae3Y4QJM2EaOZn4lsmF9XsCvtRWmY7nrILTB96_21bWAjDyuVESHxcsyjOjHy3JvraR_HbS34KuR3lWTKlq7Y1Rvo2aZLaINTTu_AainERyN21zXycVxNOc");'></div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+</div>
+<div class="rounded-xl overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Close up of a cocktail being poured" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBP-NN81nqMt4WSk751rr5Sk1kVB8RD6a58UNMjcKL08nZFTfENTWtoF-Kcil7EWDO8WCEkLbYmC8uy6yEBGKmOuSB_tQF0TPz8KqG2UkSgiIQmcEDaaeGYiAarRYSCAhYfl43lpQtMEjrqj5NvdkvHVYiBW8ihf5xURgYRawn_H5EPniDgAAtwmEDr1e5hAnKX501QHIgQRqGtEu7RcNZkADVy7ulp3zHYfcFmzpi2X5rI5CUaNYmi4g9Rmf_79uB_8z8gbuHsp5YJ");'></div>
+</div>
+<div class="rounded-xl overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Artistic plating of a dessert" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_84U4aa1a5JwfygWriBkZpV4Wrinu71x1ZVpFdpliLJl5gYywedeozAodg9BNfN2PtMv6PcbxL7tK-pErSPeoEFFztEvlFtZpDvmUAFHPB0qqRB3_pA_eisR5hrNF3JYe0X33LmzN_FLK6HsRYi1Btt25nn6iUUpFfMAxto1IENxOp6_Xj5uR7BShBHAPzUsjxwGZesyw3Z5A6QH8z2v-RqOCFwxHmE3xxzvHHy0h_Pa_B4XIG1K6Nyr5iboQdt8kJuTY2yUjBE7K");'></div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sticky Reservation Widget -->
+<div class="lg:col-span-4 relative">
+<div class="sticky top-24">
+<div class="bg-surface-dark border border-surface-border rounded-xl p-6 shadow-2xl shadow-black/50 overflow-hidden">
+<!-- Widget Header -->
+<div class="flex items-center justify-between mb-6 pb-4 border-b border-surface-border">
+<h3 class="text-lg font-bold text-white">Make a Reservation</h3>
+<span class="flex items-center text-xs text-primary font-medium bg-primary/10 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[16px] mr-1">check_circle</span>
+                                High Demand
+                            </span>
+</div>
+<!-- Date Picker Mockup -->
+<div class="mb-6">
+<div class="flex justify-between items-center mb-4">
+<button class="text-gray-400 hover:text-white"><span class="material-symbols-outlined">chevron_left</span></button>
+<span class="font-bold text-white">October 2023</span>
+<button class="text-gray-400 hover:text-white"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-sm mb-2">
+<span class="text-gray-500 text-xs uppercase">Su</span>
+<span class="text-gray-500 text-xs uppercase">Mo</span>
+<span class="text-gray-500 text-xs uppercase">Tu</span>
+<span class="text-gray-500 text-xs uppercase">We</span>
+<span class="text-gray-500 text-xs uppercase">Th</span>
+<span class="text-gray-500 text-xs uppercase">Fr</span>
+<span class="text-gray-500 text-xs uppercase">Sa</span>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center">
+<!-- Empty days -->
+<span class="p-2"></span><span class="p-2"></span>
+<!-- Days -->
+<button class="p-2 text-gray-400 hover:text-white rounded hover:bg-white/10">1</button>
+<button class="p-2 text-gray-400 hover:text-white rounded hover:bg-white/10">2</button>
+<button class="p-2 text-gray-400 hover:text-white rounded hover:bg-white/10">3</button>
+<button class="p-2 text-gray-400 hover:text-white rounded hover:bg-white/10">4</button>
+<button class="p-2 text-gray-400 hover:text-white rounded hover:bg-white/10">5</button>
+<button class="p-2 text-gray-400 hover:text-white rounded hover:bg-white/10">6</button>
+<button class="p-2 text-gray-400 hover:text-white rounded hover:bg-white/10">7</button>
+<button class="p-2 text-white font-bold bg-primary rounded shadow-lg shadow-primary/20">8</button>
+<button class="p-2 text-gray-400 hover:text-white rounded hover:bg-white/10">9</button>
+<button class="p-2 text-gray-400 hover:text-white rounded hover:bg-white/10">10</button>
+<button class="p-2 text-gray-400 hover:text-white rounded hover:bg-white/10">11</button>
+<button class="p-2 text-gray-400 hover:text-white rounded hover:bg-white/10">12</button>
+</div>
+</div>
+<!-- Guests -->
+<div class="mb-6">
+<label class="block text-xs uppercase tracking-wider text-gray-500 mb-2">Guests</label>
+<div class="flex items-center justify-between bg-background-dark p-2 rounded-lg border border-surface-border">
+<button class="p-2 text-gray-400 hover:text-white"><span class="material-symbols-outlined">remove</span></button>
+<span class="font-bold text-white">2 Guests</span>
+<button class="p-2 text-gray-400 hover:text-white"><span class="material-symbols-outlined">add</span></button>
+</div>
+</div>
+<!-- Time Slots -->
+<div class="mb-8">
+<label class="block text-xs uppercase tracking-wider text-gray-500 mb-2">Available Times</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 rounded border border-surface-border text-gray-500 line-through text-sm cursor-not-allowed bg-white/5">18:00</button>
+<button class="py-2 rounded border border-surface-border text-gray-500 line-through text-sm cursor-not-allowed bg-white/5">18:30</button>
+<button class="py-2 rounded border border-primary text-primary font-bold text-sm bg-primary/10 hover:bg-primary hover:text-white transition-colors">19:00</button>
+<button class="py-2 rounded border border-surface-border text-white hover:border-primary hover:text-primary text-sm transition-colors">19:30</button>
+<button class="py-2 rounded border border-surface-border text-white hover:border-primary hover:text-primary text-sm transition-colors">20:00</button>
+<button class="py-2 rounded border border-surface-border text-white hover:border-primary hover:text-primary text-sm transition-colors">20:30</button>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full bg-primary hover:bg-primary-hover text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+                            Confirm Table
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<p class="text-center text-xs text-gray-500 mt-4">
+                            Reservations require a credit card hold. <br/>
+                            Cancellation fee applies within 24 hours.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-surface-border bg-surface-dark py-12 px-6 md:px-10 lg:px-40 mt-auto">
+<div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between gap-10">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 text-white">
+<span class="material-symbols-outlined text-primary">diamond</span>
+<h2 class="font-bold text-lg">Le Miroir</h2>
+</div>
+<p class="text-gray-500 text-sm max-w-xs">
+                    Experience the pinnacle of modern French cuisine in an atmosphere of timeless elegance.
+                </p>
+</div>
+<div class="flex gap-16">
+<div class="flex flex-col gap-3">
+<h4 class="text-white font-bold text-sm uppercase tracking-wider">Navigate</h4>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Home</a>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Menu</a>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Reservations</a>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Gift Cards</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="text-white font-bold text-sm uppercase tracking-wider">Contact</h4>
+<span class="text-gray-400 text-sm">123 Avenue des Champs-Élysées</span>
+<span class="text-gray-400 text-sm">Paris, France 75008</span>
+<span class="text-gray-400 text-sm">+33 1 23 45 67 89</span>
+</div>
+</div>
+</div>
+<div class="max-w-[1280px] mx-auto mt-12 pt-8 border-t border-surface-border flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="text-gray-600 text-xs">© 2023 Le Miroir. All rights reserved.</span>
+<div class="flex gap-4">
+<a class="text-gray-600 hover:text-white transition-colors" href="#">
+<span class="text-xs font-bold border border-gray-600 rounded-full size-6 flex items-center justify-center">IG</span>
+</a>
+<a class="text-gray-600 hover:text-white transition-colors" href="#">
+<span class="text-xs font-bold border border-gray-600 rounded-full size-6 flex items-center justify-center">FB</span>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

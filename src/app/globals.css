@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
+@theme {
+  /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* New Design Token Map */
+  --color-primary: #8d7f68;
+  --color-primary-hover: #a3937a;
+
+  /* Backgrounds */
+  --color-background-light: #f7f7f7;
+  --color-background-dark: #0a0a0a;
+  /* Deep black for premium feel */
+  --color-background-alt: #1b1917;
+  /* Slightly lighter dark */
+
+  /* Surfaces */
+  --color-surface-dark: #151514;
+  --color-surface-lighter: #262523;
+  --color-surface-border: #32312f;
+
+  /* Legacy Mappings (soft deprecation or remapping) */
+  --color-navy: #0a0a0a;
+  /* Mapping old navy to new dark */
+  --color-gold: #8d7f68;
+  /* Mapping old gold to new muted gold */
+  --color-gold-light: #a3937a;
+  --color-obsidian: #050505;
+  --color-charcoal: #121212;
+  --color-offwhite: #f7f7f7;
+
+  /* Fonts */
+  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-serif: var(--font-playfair-display), serif;
+  --font-body: var(--font-noto-sans), sans-serif;
+  --font-sans: var(--font-space-grotesk), sans-serif;
+  /* Defaulting sans to Space Grotesk for headers/UI */
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
+    --background: #f7f7f7;
+    --foreground: #0a0a0a;
+    --font-space-grotesk: "Space Grotesk", sans-serif;
+    --font-playfair-display: "Playfair Display", serif;
+    --font-noto-sans: "Noto Sans", sans-serif;
+  }
+
+  /* Dark mode override (manual class strategy usually, but let's set defaults for dark) */
+  .dark {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #ffffff;
+  }
+
+  html.dark body {
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-display);
 }
