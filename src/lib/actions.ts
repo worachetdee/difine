@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/db";
-import { bookings, users } from "@/db/schema";
+import { bookings, users, restaurants } from "@/db/schema";
 // import { currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
@@ -46,5 +46,15 @@ export async function createBooking(prevState: ActionState, formData: FormData) 
     } catch (error) {
         console.error("Booking error:", error);
         return { success: false, message: "Failed to create booking." };
+    }
+}
+
+export async function getRestaurants() {
+    try {
+        const data = await db.select().from(restaurants);
+        return { success: true, data };
+    } catch (error) {
+        console.error("Failed to fetch restaurants:", error);
+        return { success: false, error: "Failed to fetch restaurants" };
     }
 }

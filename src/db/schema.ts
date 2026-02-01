@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { text, integer, sqliteTable } from "drizzle-orm/sqlite-core";
+import { text, integer, real, sqliteTable } from "drizzle-orm/sqlite-core";
 
 export const users = sqliteTable("users", {
     id: text("id").primaryKey(), // Clerk ID
@@ -18,6 +18,11 @@ export const restaurants = sqliteTable("restaurants", {
     priceRange: text("price_range", { enum: ["$$", "$$$", "$$$$"] }).notNull(),
     imageUrl: text("image_url").notNull(),
     isExclusive: integer("is_exclusive", { mode: "boolean" }).default(false),
+    rating: real("rating"),
+    location: text("location"),
+    tags: text("tags"), // JSON string
+    available: integer("available", { mode: "boolean" }).default(true),
+    waitlist: integer("waitlist", { mode: "boolean" }).default(false),
     createdAt: integer("created_at", { mode: "timestamp" }).default(sql`CURRENT_TIMESTAMP`),
 });
 
