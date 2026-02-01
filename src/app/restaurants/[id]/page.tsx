@@ -9,7 +9,7 @@ export default function RestaurantDetailsPage({ params }: { params: { id: string
     // Mock data would go here based on params.id
 
     return (
-        <div className="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display antialiased text-white selection:bg-primary selection:text-white">
+        <div className="bg-background-dark min-h-screen flex flex-col font-display antialiased text-white selection:bg-primary selection:text-white">
             {/* Top Navigation (Details Style) */}
             <nav className="sticky top-0 z-50 w-full border-b border-surface-border bg-background-dark/95 backdrop-blur-md">
                 <div className="px-6 md:px-10 lg:px-40 flex items-center justify-between py-4">

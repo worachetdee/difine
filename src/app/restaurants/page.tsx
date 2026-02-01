@@ -84,7 +84,7 @@ const restaurants = [
 
 export default function RestaurantsPage() {
     return (
-        <div className="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col antialiased">
+        <div className="bg-background-dark font-display min-h-screen flex flex-col antialiased text-white selection:bg-primary selection:text-white">
             {/* Top Navigation (App Style) */}
             <header className="sticky top-0 z-50 flex items-center justify-between border-b border-white/10 bg-background-dark/90 backdrop-blur-md px-6 py-4 lg:px-12">
                 <div className="flex items-center gap-8">
@@ -222,7 +222,7 @@ export default function RestaurantsPage() {
                                     <div className="p-6 flex flex-col flex-1">
                                         <div className="flex justify-between items-start mb-2">
                                             <h3 className="text-white font-serif text-2xl font-semibold group-hover:text-primary transition-colors">{rest.name}</h3>
-                                            <div className="flex items-center gap-1 bg-surface-lighter px-2 py-1 rounded">
+                                            <div className="flex items-center gap-1 bg-white/5 px-2 py-1 rounded">
                                                 <span className="material-symbols-outlined text-primary text-sm font-icon fill-current">star</span>
                                                 <span className="text-white text-sm font-medium">{rest.rating}</span>
                                             </div>
