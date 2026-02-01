@@ -2,36 +2,13 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
-export default function RestaurantDetailsPage({ params }: { params: { id: string } }) {
-    // Mock data would go here based on params.id
-
+export default function RestaurantDetailsPage() {
     return (
-        <div className="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display antialiased text-white selection:bg-primary selection:text-white">
-            {/* Top Navigation (Details Style) */}
-            <nav className="sticky top-0 z-50 w-full border-b border-surface-border bg-background-dark/95 backdrop-blur-md">
-                <div className="px-6 md:px-10 lg:px-40 flex items-center justify-between py-4">
-                    <Link href="/restaurants" className="flex items-center gap-4 text-white">
-                        <div className="size-6 text-primary">
-                            <span className="material-symbols-outlined text-2xl font-icon">diamond</span>
-                        </div>
-                        <h2 className="text-white text-xl font-bold leading-tight tracking-wide">Le Miroir</h2>
-                    </Link>
-                    <div className="hidden lg:flex items-center gap-10">
-                        <Link href="#" className="text-gray-300 hover:text-primary transition-colors text-sm font-medium">Menu</Link>
-                        <Link href="#" className="text-gray-300 hover:text-primary transition-colors text-sm font-medium">Private Dining</Link>
-                        <Link href="#" className="text-gray-300 hover:text-primary transition-colors text-sm font-medium">Events</Link>
-                        <Link href="#" className="text-gray-300 hover:text-primary transition-colors text-sm font-medium">Contact</Link>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <div className="hidden lg:block relative size-10 rounded-full overflow-hidden border border-surface-border">
-                            <Image src="/images/hero.png" alt="Profile" fill className="object-cover" />
-                        </div>
-                    </div>
-                </div>
-            </nav>
+        <div className="bg-background-dark min-h-screen flex flex-col font-display antialiased text-white selection:bg-primary selection:text-white">
+            <Navbar />
 
             {/* Hero / Cinematic Background */}
             <div className="relative w-full h-[60vh] lg:h-[70vh] overflow-hidden group">
@@ -216,34 +193,7 @@ export default function RestaurantDetailsPage({ params }: { params: { id: string
                 </div>
             </main>
 
-            {/* Footer (Simple per template) */}
-            <footer className="border-t border-surface-border bg-surface-dark py-12 px-6 md:px-10 lg:px-40 mt-auto">
-                <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between gap-10">
-                    <div className="flex flex-col gap-4">
-                        <div className="flex items-center gap-2 text-white">
-                            <span className="material-symbols-outlined text-primary font-icon">diamond</span>
-                            <h2 className="font-bold text-lg">Le Miroir</h2>
-                        </div>
-                        <p className="text-gray-500 text-sm max-w-xs">
-                            Experience the pinnacle of modern French cuisine in an atmosphere of timeless elegance.
-                        </p>
-                    </div>
-                    <div className="flex gap-16">
-                        <div className="flex flex-col gap-3">
-                            <h4 className="text-white font-bold text-sm uppercase tracking-wider">Navigate</h4>
-                            <Link href="#" className="text-gray-400 hover:text-primary text-sm">Home</Link>
-                            <Link href="#" className="text-gray-400 hover:text-primary text-sm">Menu</Link>
-                            <Link href="#" className="text-gray-400 hover:text-primary text-sm">Reservations</Link>
-                        </div>
-                        <div className="flex flex-col gap-3">
-                            <h4 className="text-white font-bold text-sm uppercase tracking-wider">Contact</h4>
-                            <span className="text-gray-400 text-sm">123 Avenue des Champs-Élysées</span>
-                            <span className="text-gray-400 text-sm">Paris, France 75008</span>
-                            <span className="text-gray-400 text-sm">+33 1 23 45 67 89</span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     );
 }
