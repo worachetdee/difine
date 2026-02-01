@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+
 
 // Mock Data matching the template
 const restaurants = [
@@ -93,33 +93,33 @@ export default function RestaurantsPage() {
                 <aside className="hidden lg:flex flex-col w-72 h-[calc(100vh-80px)] overflow-y-auto border-r border-white/10 bg-background-dark p-6 sticky top-20">
                     <div className="flex flex-col gap-8">
                         <div>
-                            <h1 className="text-white text-lg font-serif font-medium tracking-wide mb-1">Refine Search</h1>
+                            <h1 className="text-white text-lg font-display font-medium tracking-wide mb-1">Refine Search</h1>
                             <p className="text-[#adaba8] text-xs">Filter by your preferences</p>
                         </div>
                         {/* Price Filter */}
                         <div className="flex flex-col gap-3">
-                            <h3 className="text-primary text-xs font-bold uppercase tracking-wider">Price Range</h3>
+                            <h3 className="text-primary text-xs font-bold uppercase tracking-wider font-display">Price Range</h3>
                             <div className="flex gap-2">
-                                <button className="flex-1 py-2 text-xs font-medium rounded border border-white/10 text-[#adaba8] hover:border-primary/50 hover:text-white transition-colors">$$</button>
-                                <button className="flex-1 py-2 text-xs font-medium rounded border border-white/10 text-[#adaba8] hover:border-primary/50 hover:text-white transition-colors">$$$</button>
-                                <button className="flex-1 py-2 text-xs font-medium rounded bg-primary text-white border border-primary shadow-[0_0_10px_rgba(141,127,104,0.3)]">$$$$</button>
+                                <button className="flex-1 py-2 text-xs font-medium rounded border border-white/10 text-[#adaba8] hover:border-primary/50 hover:text-white transition-colors font-display">$$</button>
+                                <button className="flex-1 py-2 text-xs font-medium rounded border border-white/10 text-[#adaba8] hover:border-primary/50 hover:text-white transition-colors font-display">$$$</button>
+                                <button className="flex-1 py-2 text-xs font-medium rounded bg-primary text-white border border-primary shadow-[0_0_10px_rgba(141,127,104,0.3)] font-display">$$$$</button>
                             </div>
                         </div>
                         {/* Cuisine Filter */}
                         <div className="flex flex-col gap-3">
-                            <h3 className="text-primary text-xs font-bold uppercase tracking-wider">Cuisine</h3>
+                            <h3 className="text-primary text-xs font-bold uppercase tracking-wider font-display">Cuisine</h3>
                             <div className="flex flex-col gap-2">
                                 {["French Gastronomy", "Japanese Omakase", "Modern Italian", "Premium Steakhouse", "Nordic Fusion"].map((cuisine, i) => (
                                     <label key={i} className="flex items-center gap-3 group cursor-pointer">
                                         <input type="checkbox" className="size-4 rounded border-white/20 bg-surface-dark text-primary focus:ring-primary focus:ring-offset-background-dark cursor-pointer" />
-                                        <span className="text-[#adaba8] text-sm group-hover:text-white transition-colors">{cuisine}</span>
+                                        <span className="text-[#adaba8] text-sm group-hover:text-white transition-colors font-display">{cuisine}</span>
                                     </label>
                                 ))}
                             </div>
                         </div>
                         {/* Ambiance Filter */}
                         <div className="flex flex-col gap-3">
-                            <h3 className="text-primary text-xs font-bold uppercase tracking-wider">Ambiance</h3>
+                            <h3 className="text-primary text-xs font-bold uppercase tracking-wider font-display">Ambiance</h3>
                             <div className="flex flex-col gap-2">
                                 {[
                                     { icon: "wine_bar", label: "Romantic" },
@@ -129,7 +129,7 @@ export default function RestaurantsPage() {
                                     <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-surface-dark/50 hover:bg-surface-dark cursor-pointer group transition-colors">
                                         <div className="flex items-center gap-3">
                                             <span className="material-symbols-outlined text-white/60 group-hover:text-primary text-sm font-icon">{item.icon}</span>
-                                            <span className="text-[#adaba8] text-sm group-hover:text-white">{item.label}</span>
+                                            <span className="text-[#adaba8] text-sm group-hover:text-white font-display">{item.label}</span>
                                         </div>
                                         <span className="material-symbols-outlined text-white/20 text-sm font-icon">add</span>
                                     </div>
@@ -145,7 +145,7 @@ export default function RestaurantsPage() {
                         {/* Page Header */}
                         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b border-white/5 pb-6">
                             <div>
-                                <h1 className="text-white text-3xl md:text-4xl font-serif font-bold leading-tight mb-2">Fine Dining in New York</h1>
+                                <h1 className="text-white text-3xl md:text-4xl font-display font-bold leading-tight mb-2">Fine Dining in New York</h1>
                                 <p className="text-[#adaba8] text-sm md:text-base font-light">Showing {restaurants.length} premium results found</p>
                             </div>
                             <div className="flex items-center gap-3">
@@ -167,17 +167,17 @@ export default function RestaurantsPage() {
                                     className="group flex flex-col bg-surface-dark rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 shadow-2xl shadow-black/50"
                                 >
                                     <div className="relative aspect-[4/3] w-full overflow-hidden">
-                                        <div className="absolute top-4 right-4 z-10 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-white border border-white/10">
+                                        <div className="absolute top-4 right-4 z-10 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-white border border-white/10 font-display">
                                             {rest.price}
                                         </div>
                                         {rest.tags.includes("Michelin Star") && (
                                             <div className="absolute top-4 left-4 z-10">
-                                                <span className="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Michelin Star</span>
+                                                <span className="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider font-display">Michelin Star</span>
                                             </div>
                                         )}
                                         {rest.tags.includes("Chef's Table") && (
                                             <div className="absolute top-4 left-4 z-10">
-                                                <span className="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">Chef&apos;s Table</span>
+                                                <span className="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider font-display">Chef&apos;s Table</span>
                                             </div>
                                         )}
                                         <Image
@@ -189,38 +189,38 @@ export default function RestaurantsPage() {
                                     </div>
                                     <div className="p-6 flex flex-col flex-1">
                                         <div className="flex justify-between items-start mb-2">
-                                            <h3 className="text-white font-serif text-2xl font-semibold group-hover:text-primary transition-colors">{rest.name}</h3>
+                                            <h3 className="text-white font-display text-2xl font-semibold group-hover:text-primary transition-colors">{rest.name}</h3>
                                             <div className="flex items-center gap-1 bg-white/5 px-2 py-1 rounded">
                                                 <span className="material-symbols-outlined text-primary text-sm font-icon fill-current">star</span>
-                                                <span className="text-white text-sm font-medium">{rest.rating}</span>
+                                                <span className="text-white text-sm font-medium font-display">{rest.rating}</span>
                                             </div>
                                         </div>
-                                        <p className="text-[#adaba8] text-sm mb-4 line-clamp-2">{rest.description}</p>
+                                        <p className="text-[#adaba8] text-sm mb-4 line-clamp-2 font-display">{rest.description}</p>
                                         <div className="mt-auto flex flex-col gap-4">
                                             <div className="flex items-center gap-4 text-xs text-[#adaba8] border-t border-white/5 pt-4">
                                                 <div className="flex items-center gap-1.5">
                                                     <span className="material-symbols-outlined text-primary text-base font-icon">restaurant</span>
-                                                    <span>{rest.cuisine}</span>
+                                                    <span className="font-display">{rest.cuisine}</span>
                                                 </div>
                                                 <div className="flex items-center gap-1.5">
                                                     <span className="material-symbols-outlined text-primary text-base font-icon">location_on</span>
-                                                    <span>{rest.location}</span>
+                                                    <span className="font-display">{rest.location}</span>
                                                 </div>
                                                 <div className="flex items-center gap-1.5 ml-auto">
                                                     {rest.available ? (
                                                         <>
                                                             <span className="material-symbols-outlined text-green-500 text-base font-icon">check_circle</span>
-                                                            <span className="text-white">Available</span>
+                                                            <span className="text-white font-display">Available</span>
                                                         </>
                                                     ) : rest.waitlist ? (
                                                         <>
                                                             <span className="material-symbols-outlined text-red-400 text-base font-icon">schedule</span>
-                                                            <span className="text-white">Waitlist</span>
+                                                            <span className="text-white font-display">Waitlist</span>
                                                         </>
                                                     ) : null}
                                                 </div>
                                             </div>
-                                            <Link href={`/restaurants/${rest.id}`} className="w-full py-3 flex justify-center bg-transparent border border-primary text-primary font-bold text-sm tracking-wide uppercase hover:bg-primary hover:text-white transition-all duration-300 rounded-lg">
+                                            <Link href={`/restaurants/${rest.id}`} className="w-full py-3 flex justify-center bg-transparent border border-primary text-primary font-bold text-sm tracking-wide uppercase hover:bg-primary hover:text-white transition-all duration-300 rounded-lg font-display">
                                                 View Details
                                             </Link>
                                         </div>
@@ -234,10 +234,6 @@ export default function RestaurantsPage() {
                             <button className="px-8 py-3 bg-surface-dark border border-white/10 text-white rounded-lg hover:bg-primary hover:border-primary transition-colors font-medium">
                                 Load More Restaurants
                             </button>
-                        </div>
-
-                        <div className="mt-auto pt-10">
-                            <Footer />
                         </div>
                     </div>
                 </main>

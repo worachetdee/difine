@@ -167,8 +167,7 @@ function TierCard({ title, price, usd, tagline, idealFor, features, btnText, isP
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay, duration: 0.6 }}
             className={`flex flex-col p-8 rounded-lg relative ${isPopular ? 'bg-surface-lighter text-white border border-primary/50 shadow-2xl scale-[1.02] z-10' : 'bg-surface-dark text-white border border-white/10 shadow-xl'}`}
         >
