@@ -1,36 +1,52 @@
 "use server";
 
 import { db } from "@/db";
-import { bookings, users } from "@/db/schema";
-// import { currentUser } from "@clerk/nextjs/server";
+import { bookings } from "@/db/schema";
 import { revalidatePath } from "next/cache";
+import { z } from "zod";
+import { v4 as uuidv4 } from "uuid";
+
+// Define schema for booking validation
+const bookingSchema = z.object({
+  restaurantId: z.string().min(1, "Restaurant ID is required"),
+  date: z.string().min(1, "Date is required"),
+  time: z.string().min(1, "Time is required"),
+  partySize: z.coerce.number().min(1, "Party size must be at least 1"),
+});
 
 type ActionState = { success: boolean; message: string };
 
 export async function createBooking(prevState: ActionState, formData: FormData) {
-    // Mock user for preview
-    const user = { id: "preview_user", email: "preview@example.com" };
+    // TODO: Implement actual authentication using Clerk
     // const user = await currentUser();
+    const user = { id: "preview_user", email: "preview@example.com" };
+
     if (!user) {
         throw new Error("Must be signed in to book.");
     }
 
-    // Ensure user exists in our DB (sync if needed, but for MVP we assume sync or create on fly)
-    // Ideally Clerk webhooks handle this, but here's a lazy check:
-    // await db.insert(users).values({ id: user.id, email: user.emailAddresses[0].emailAddress }).onConflictDoNothing();
+    // Validate form data
+    const validatedFields = bookingSchema.safeParse({
+        restaurantId: formData.get("restaurantId"),
+        date: formData.get("date"),
+        time: formData.get("time"),
+        partySize: formData.get("partySize"),
+    });
 
-    const restaurantId = formData.get("restaurantId") as string;
-    const dateStr = formData.get("date") as string;
-    const timeStr = formData.get("time") as string;
-    const partySize = parseInt(formData.get("partySize") as string);
+    if (!validatedFields.success) {
+        return {
+            success: false,
+            message: "Invalid booking details. Please check your inputs.",
+        };
+    }
+
+    const { restaurantId, date: dateStr, time: timeStr, partySize } = validatedFields.data;
 
     // Combine date and time
     const date = new Date(`${dateStr}T${timeStr}`);
 
     try {
-        // Generate a random ID for now since we don't have crypto/uuid or auto-increment text setup in this snippet
-        // In production use uuidv4 or similar.
-        const id = Math.random().toString(36).substring(7);
+        const id = uuidv4();
 
         await db.insert(bookings).values({
             id,

@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-// import { ClerkProvider } from "@clerk/nextjs";
-// import type { Metadata } from "next";
 import { Space_Grotesk, Playfair_Display, Noto_Sans } from "next/font/google";
 import "./globals.css";
 
