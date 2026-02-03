@@ -35,9 +35,9 @@ export function Spotlight() {
               <Link href="/restaurants/123" className="h-12 flex items-center justify-center rounded bg-primary px-8 text-sm font-bold uppercase tracking-widest text-white hover:bg-primary-hover transition-colors">
                 Reserve Table
               </Link>
-              <button className="h-12 rounded border border-white/20 px-8 text-sm font-bold uppercase tracking-widest text-white hover:bg-white/5 transition-colors">
+              <Link href="/restaurants/123#menu" className="h-12 flex items-center justify-center rounded border border-white/20 px-8 text-sm font-bold uppercase tracking-widest text-white hover:bg-white/5 transition-colors">
                 View Menu
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -136,7 +136,7 @@ export default function ConciergePage() {
                         <Link href="/pricing" className="px-10 py-4 bg-primary text-white font-bold text-sm uppercase tracking-widest rounded hover:bg-primary-hover transition-colors shadow-lg">
                             View Memberships
                         </Link>
-                        <Link href="#" className="px-10 py-4 border border-white/20 text-white font-bold text-sm uppercase tracking-widest rounded hover:bg-white/5 transition-colors">
+                        <Link href="/contact" className="px-10 py-4 border border-white/20 text-white font-bold text-sm uppercase tracking-widest rounded hover:bg-white/5 transition-colors">
                             Contact Support
                         </Link>
                     </div>

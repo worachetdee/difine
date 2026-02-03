@@ -69,7 +69,7 @@ export default function RestaurantDetailsPage() {
                         </section>
 
                         {/* Menu Highlights */}
-                        <section>
+                        <section id="menu">
                             <div className="flex items-center justify-between mb-8">
                                 <h3 className="text-2xl font-bold text-white">Menu Highlights</h3>
                                 <button className="text-sm text-primary hover:text-white transition-colors uppercase tracking-wider font-bold flex items-center gap-1">
