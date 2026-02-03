@@ -18,7 +18,7 @@ export function FeaturedCollections() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Card 1 */}
-          <div className="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer">
+          <Link href="/restaurants" className="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer block">
             <Image
               src="/images/dish-1.jpg"
               alt="Michelin Star Dish"
@@ -33,10 +33,10 @@ export function FeaturedCollections() {
                 Discover culinary excellence awarded by the world&apos;s most prestigious guide.
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Card 2 */}
-          <div className="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer">
+          <Link href="/restaurants" className="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer block">
             <Image
               src="/images/chef-cooking.jpg"
               alt="Chef's Table"
@@ -51,10 +51,10 @@ export function FeaturedCollections() {
                 Front-row seats to the artistry of cooking. An immersive dining experience.
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Card 3 */}
-          <div className="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer">
+          <Link href="/restaurants" className="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer block">
             <Image
               src="/images/restaurant-interior.jpg"
               alt="Fine Ambience"
@@ -69,7 +69,7 @@ export function FeaturedCollections() {
                 Dine amongst the stars with breathtaking panoramas of the city skyline.
               </p>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </section>
