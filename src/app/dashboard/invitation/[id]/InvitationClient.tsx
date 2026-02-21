@@ -11,7 +11,7 @@ export default function InvitationClient() {
             {/* Hero Image */}
             <div className="relative h-[50vh] w-full">
                 <Image
-                    src="/images/restaurant-interior-wide.jpg"
+                    src="/difine/images/restaurant-interior-wide.jpg"
                     alt="L'Effervescence Interior"
                     fill
                     className="object-cover"

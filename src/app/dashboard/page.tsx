@@ -34,7 +34,7 @@ export default function Dashboard() {
                 <div className="grid md:grid-cols-2">
                     <div className="relative h-[300px] md:h-auto">
                         <Image
-                            src="/images/restaurant-interior.jpg"
+                            src="/difine/images/restaurant-interior.jpg"
                             alt="L'Effervescence"
                             fill
                             className="object-cover"
@@ -72,7 +72,7 @@ export default function Dashboard() {
                             <Link href="/dashboard/invitation/123" className="px-8 py-3 bg-primary text-white font-bold text-xs uppercase tracking-widest rounded hover:bg-primary-hover transition-colors">
                                 View Details
                             </Link>
-                            <Link href="/dashboard/invitation/123/accept" className="px-8 py-3 border border-white/20 text-white font-bold text-xs uppercase tracking-widest rounded hover:bg-white/5 transition-colors">
+                            <Link href="/dashboard/confirmation/123" className="px-8 py-3 border border-white/20 text-white font-bold text-xs uppercase tracking-widest rounded hover:bg-white/5 transition-colors">
                                 Accept Invitation
                             </Link>
                         </div>
@@ -89,19 +89,19 @@ export default function Dashboard() {
                 <DashboardCard
                     title="Past Experiences"
                     subtitle="Relive 12 culinary journeys"
-                    image="/images/dish-1.jpg"
+                    image="/difine/images/dish-1.jpg"
                     link="/dashboard/history"
                 />
                 <DashboardCard
                     title="Upcoming Events"
                     subtitle="Members-only chef's table"
-                    image="/images/chef-cooking.jpg"
+                    image="/difine/images/chef-cooking.jpg"
                     link="/dashboard/events"
                 />
                 <DashboardCard
                     title="Your Profile"
                     subtitle="Update dietary preferences"
-                    image="/images/restaurant-interior.jpg"
+                    image="/difine/images/restaurant-interior.jpg"
                     link="/dashboard/profile"
                 />
             </div>

@@ -12,7 +12,7 @@ export function Spotlight() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center bg-[#252524] rounded-xl overflow-hidden shadow-2xl">
           <div className="w-full lg:w-1/2 h-[400px] lg:h-[500px] relative">
             <Image
-              src="/images/restaurant-interior-wide.jpg"
+              src="/difine/images/restaurant-interior-wide.jpg"
               alt="L'Effervescence Interior"
               fill
               className="object-cover"

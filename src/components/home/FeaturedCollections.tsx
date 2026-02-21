@@ -20,7 +20,7 @@ export function FeaturedCollections() {
           {/* Card 1 */}
           <div className="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer">
             <Image
-              src="/images/dish-1.jpg"
+              src="/difine/images/dish-1.jpg"
               alt="Michelin Star Dish"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -38,7 +38,7 @@ export function FeaturedCollections() {
           {/* Card 2 */}
           <div className="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer">
             <Image
-              src="/images/chef-cooking.jpg"
+              src="/difine/images/chef-cooking.jpg"
               alt="Chef's Table"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -56,7 +56,7 @@ export function FeaturedCollections() {
           {/* Card 3 */}
           <div className="group relative overflow-hidden rounded-lg aspect-[3/4] cursor-pointer">
             <Image
-              src="/images/restaurant-interior.jpg"
+              src="/difine/images/restaurant-interior.jpg"
               alt="Fine Ambience"
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-110"

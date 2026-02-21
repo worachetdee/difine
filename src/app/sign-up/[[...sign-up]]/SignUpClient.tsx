@@ -1,8 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function SignUpClient() {
+    const router = useRouter();
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        router.push("/onboarding");
+    };
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-background-dark font-display text-white px-4">
             <div className="w-full max-w-md">
@@ -12,7 +20,7 @@ export default function SignUpClient() {
                 </div>
 
                 <div className="bg-surface-dark backdrop-blur-md border border-white/10 shadow-2xl w-full p-8 rounded-lg">
-                    <form className="space-y-4" action="/dashboard">
+                    <form className="space-y-4" onSubmit={handleSubmit}>
                         <div className="grid grid-cols-2 gap-4">
                             <div>
                                 <label className="block text-gray-300 text-xs uppercase tracking-wider mb-2 font-bold">First Name</label>
@@ -42,6 +50,16 @@ export default function SignUpClient() {
                             <input
                                 type="password"
                                 className="w-full bg-white/5 border border-white/10 p-3 rounded text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors text-sm"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-gray-300 text-xs uppercase tracking-wider mb-2 font-bold flex justify-between">
+                                Invitation Code <span className="text-primary/70 normal-case tracking-normal">Required for access</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="e.g. DINING-VIP"
+                                className="w-full bg-white/5 border border-white/10 p-3 rounded text-white placeholder:text-gray-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors text-sm uppercase tracking-wider"
                             />
                         </div>
                         <button className="w-full bg-primary hover:bg-primary-hover text-white font-bold text-xs uppercase tracking-widest p-4 rounded transition-colors mt-4 shadow-lg">

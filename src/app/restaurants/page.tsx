@@ -14,10 +14,10 @@ const restaurants = [
         rating: 4.9,
         price: "$$$$",
         cuisine: "French",
-        location: "Tribeca, NY",
+        location: "Ginza, Tokyo",
         tags: ["Michelin Star"],
         description: "Experience the pinnacle of French gastronomy in an intimate, velvet-draped setting.",
-        image: "/images/restaurant-interior-wide.jpg", // Using widely available asset
+        image: "/difine/images/restaurant-interior-wide.jpg", // Using widely available asset
         available: true
     },
     {
@@ -26,10 +26,10 @@ const restaurants = [
         rating: 4.7,
         price: "$$$",
         cuisine: "Mediterranean",
-        location: "SoHo, NY",
+        location: "Omotesando, Tokyo",
         tags: [],
         description: "Elevated Mediterranean cuisine served on a panoramic rooftop terrace.",
-        image: "/images/dish-1.jpg",
+        image: "/difine/images/dish-1.jpg",
         available: false
     },
     {
@@ -38,10 +38,10 @@ const restaurants = [
         rating: 5.0,
         price: "$$$$",
         cuisine: "Japanese",
-        location: "Midtown, NY",
+        location: "Nihonbashi, Tokyo",
         tags: ["Chef's Table"],
         description: "Modern Japanese omakase in a sleek, minimalist space featuring rare sake pairings.",
-        image: "/images/hero.png",
+        image: "/difine/images/hero.png",
         available: false,
         waitlist: true
     },
@@ -51,10 +51,10 @@ const restaurants = [
         rating: 4.5,
         price: "$$$",
         cuisine: "American",
-        location: "West Village, NY",
+        location: "Nishiazabu, Tokyo",
         tags: [],
         description: "A hidden speakeasy and supper club offering classic cocktails and a menu inspired by the roaring twenties.",
-        image: "/images/restaurant-interior.jpg",
+        image: "/difine/images/restaurant-interior.jpg",
         available: false
     },
     {
@@ -63,10 +63,10 @@ const restaurants = [
         rating: 4.8,
         price: "$$$$",
         cuisine: "Modern",
-        location: "Chelsea, NY",
+        location: "Daikanyama, Tokyo",
         tags: [],
         description: "Innovative molecular gastronomy where science meets art in every dish. A true sensory experience.",
-        image: "/images/chef-cooking.jpg",
+        image: "/difine/images/chef-cooking.jpg",
         available: true
     },
     {
@@ -75,10 +75,10 @@ const restaurants = [
         rating: 4.6,
         price: "$$$$",
         cuisine: "New American",
-        location: "FiDi, NY",
+        location: "Otemachi, Tokyo",
         tags: [],
         description: "Perched on the 50th floor, The Summit offers unparalleled views combined with exquisite new-American cuisine.",
-        image: "/images/restaurant-interior-wide.jpg",
+        image: "/difine/images/restaurant-interior-wide.jpg",
         available: false
     }
 ];
@@ -145,7 +145,7 @@ export default function RestaurantsPage() {
                         {/* Page Header */}
                         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b border-white/5 pb-6">
                             <div>
-                                <h1 className="text-white text-3xl md:text-4xl font-display font-bold leading-tight mb-2">Fine Dining in New York</h1>
+                                <h1 className="text-white text-3xl md:text-4xl font-display font-bold leading-tight mb-2">Fine Dining in Tokyo</h1>
                                 <p className="text-[#adaba8] text-sm md:text-base font-light">Showing {restaurants.length} premium results found</p>
                             </div>
                             <div className="flex items-center gap-3">

@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/home/Hero";
 import { FeaturedCollections } from "@/components/home/FeaturedCollections";
 import { Spotlight } from "@/components/home/Spotlight";
-import { Newsletter } from "@/components/home/Newsletter";
+import { EarlyAccessSection } from "@/components/home/EarlyAccessSection";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
         <Hero />
         <FeaturedCollections />
         <Spotlight />
-        <Newsletter />
+        <EarlyAccessSection />
       </main>
 
       <Footer />

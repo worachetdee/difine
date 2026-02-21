@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function ProfilePage() {
     // Mock User
@@ -36,9 +37,9 @@ export default function ProfilePage() {
                             <p className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Member since {user.joinedDate}</p>
                         </div>
                     </div>
-                    <button className="px-6 py-3 border border-white/20 text-white font-bold text-xs uppercase tracking-widest rounded hover:bg-white/5 transition-colors">
+                    <Link href="/dashboard/subscription" className="px-6 py-3 border border-white/20 text-white font-bold text-xs uppercase tracking-widest rounded hover:bg-white/5 transition-colors">
                         Manage Subscription
-                    </button>
+                    </Link>
                 </section>
 
                 {/* Personal Information */}

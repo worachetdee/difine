@@ -1,8 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function SignInClient() {
+    const router = useRouter();
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        router.push("/dashboard");
+    };
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-background-dark font-display text-white px-4">
             <div className="w-full max-w-md">
@@ -12,7 +20,7 @@ export default function SignInClient() {
                 </div>
 
                 <div className="bg-surface-dark backdrop-blur-md border border-white/10 shadow-2xl w-full p-8 rounded-lg">
-                    <form className="space-y-4" action="/dashboard">
+                    <form className="space-y-4" onSubmit={handleSubmit}>
                         <div>
                             <label className="block text-gray-300 text-xs uppercase tracking-wider mb-2 font-bold">Email address</label>
                             <input
@@ -35,6 +43,11 @@ export default function SignInClient() {
                     <div className="mt-8 text-center text-xs tracking-wide">
                         <span className="text-gray-400">No account? </span>
                         <Link href="/sign-up" className="text-primary hover:text-white transition-colors font-bold uppercase">Sign up</Link>
+                    </div>
+                    <div className="mt-4 text-center">
+                        <Link href="/partner/login" className="text-gray-500 hover:text-white transition-colors text-xs tracking-widest uppercase">
+                            Login as Partner
+                        </Link>
                     </div>
                 </div>
             </div>

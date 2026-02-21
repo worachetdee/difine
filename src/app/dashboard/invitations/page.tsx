@@ -12,7 +12,7 @@ export default function InvitationsPage() {
             restaurant: "L'Effervescence",
             date: "Saturday, February 15",
             time: "7:00 PM",
-            image: "/images/restaurant-interior.jpg",
+            image: "/difine/images/restaurant-interior.jpg",
             stars: 2,
             cuisine: "French Contemporary",
             status: "Action Required"
@@ -25,7 +25,7 @@ export default function InvitationsPage() {
             restaurant: "Florilège",
             date: "January 18, 2026",
             time: "7:30 PM",
-            image: "/images/dish-1.jpg",
+            image: "/difine/images/dish-1.jpg",
             stars: 2,
             cuisine: "Modern French",
             status: "Completed"
@@ -35,7 +35,7 @@ export default function InvitationsPage() {
             restaurant: "Den",
             date: "December 20, 2025",
             time: "6:00 PM",
-            image: "/images/hero.png",
+            image: "/difine/images/hero.png",
             stars: 2,
             cuisine: "Creative Kaiseki",
             status: "Completed"

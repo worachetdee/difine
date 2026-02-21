@@ -80,7 +80,7 @@ export default function RestaurantDetailsClient() {
                                 {/* Menu Item 1 */}
                                 <div className="group flex gap-4 p-4 rounded-xl hover:bg-surface-dark/50 transition-colors border border-transparent hover:border-surface-border">
                                     <div className="size-20 shrink-0 rounded-lg overflow-hidden relative">
-                                        <Image src="/images/dish-1.jpg" alt="Foie Gras" fill className="object-cover" />
+                                        <Image src="/difine/images/dish-1.jpg" alt="Foie Gras" fill className="object-cover" />
                                     </div>
                                     <div className="flex-1 flex flex-col justify-center">
                                         <div className="flex justify-between items-baseline mb-1">
@@ -93,7 +93,7 @@ export default function RestaurantDetailsClient() {
                                 {/* Menu Item 2 */}
                                 <div className="group flex gap-4 p-4 rounded-xl hover:bg-surface-dark/50 transition-colors border border-transparent hover:border-surface-border">
                                     <div className="size-20 shrink-0 rounded-lg overflow-hidden relative">
-                                        <Image src="/images/ingredients.jpg" alt="Scallops" fill className="object-cover" />
+                                        <Image src="/difine/images/ingredients.jpg" alt="Scallops" fill className="object-cover" />
                                     </div>
                                     <div className="flex-1 flex flex-col justify-center">
                                         <div className="flex justify-between items-baseline mb-1">
