@@ -14,7 +14,7 @@ export default function ConciergePage() {
             {/* Hero Section */}
             <section className="relative h-[70vh] w-full overflow-hidden flex items-center justify-center">
                 <Image
-                    src="/images/restaurant-interior-wide.jpg" // Using an existing asset
+                    src="/difine/images/restaurant-interior-wide.jpg" // Using an existing asset
                     alt="Concierge Service"
                     fill
                     className="object-cover opacity-60"
@@ -71,7 +71,7 @@ export default function ConciergePage() {
                         className="relative h-[400px] rounded-lg overflow-hidden border border-white/10"
                     >
                         <Image
-                            src="/images/chef-cooking.jpg"
+                            src="/difine/images/chef-cooking.jpg"
                             alt="Chef Plating"
                             fill
                             className="object-cover"

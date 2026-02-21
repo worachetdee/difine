@@ -11,9 +11,11 @@ export function Footer() {
                     <span className="font-bold tracking-[0.1em] uppercase text-sm">DiFine</span>
                 </div>
                 <div className="flex gap-8">
-                    <Link href="#" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Privacy</Link>
-                    <Link href="#" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Terms</Link>
-                    <Link href="#" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Contact</Link>
+                    <Link href="/privacy" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Privacy</Link>
+                    <Link href="/terms" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Terms</Link>
+                    <Link href="/investors" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Investors</Link>
+                    <Link href="/press" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Press</Link>
+                    <Link href="/contact" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Contact</Link>
                 </div>
                 <p className="text-xs text-gray-600 uppercase tracking-widest">© {new Date().getFullYear()} DiFine Inc.</p>
             </div>
