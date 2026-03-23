@@ -14,6 +14,7 @@ export function Footer() {
                     <Link href="/privacy" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Privacy</Link>
                     <Link href="/terms" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Terms</Link>
                     <Link href="/investors" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Investors</Link>
+                    <Link href="/pitch-deck" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Pitch Deck</Link>
                     <Link href="/press" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Press</Link>
                     <Link href="/contact" className="text-xs text-gray-500 hover:text-primary uppercase tracking-widest transition-colors">Contact</Link>
                 </div>
