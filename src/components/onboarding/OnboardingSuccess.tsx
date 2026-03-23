@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -23,7 +24,7 @@ export function OnboardingSuccess({ plan }: { plan: string }) {
                         className="size-32 rounded-full border border-primary/30 flex items-center justify-center relative mb-8"
                     >
                         <div className="absolute inset-0 border border-primary/50 rounded-full animate-ping opacity-20" />
-                        <span className="material-symbols-outlined text-6xl text-primary">restaurant_menu</span>
+                        <Image src="/difine/images/difine-logo.svg" alt="DiFine" width={64} height={64} />
                     </motion.div>
                     <motion.p
                         initial={{ opacity: 0 }}

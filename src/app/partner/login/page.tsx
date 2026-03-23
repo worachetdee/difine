@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function PartnerLoginPage() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-background-dark font-display text-white px-4">
             <div className="w-full max-w-md text-center">
+                <Link href="/"><Image src="/difine/images/difine-logo.svg" alt="DiFine" width={48} height={48} className="mx-auto mb-6" /></Link>
                 <h1 className="text-3xl font-light uppercase tracking-tight text-white mb-4">Partner Login</h1>
                 <p className="text-gray-400 font-light tracking-wide text-sm mb-8">
                     Partner portal access coming soon.

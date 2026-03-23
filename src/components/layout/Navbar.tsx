@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LenisScroll } from "./LenisScroll";
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,21 +17,15 @@ export function Navbar() {
     ];
 
     return (
-        <motion.nav
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+        <>
+        <LenisScroll />
+        <nav
             className="fixed top-0 left-0 right-0 z-50 bg-background-dark/85 backdrop-blur-md border-b border-white/5 text-white transition-all duration-300"
         >
             <div className="flex items-center justify-between px-6 lg:px-10 py-4">
-                <div className="flex items-center gap-3 text-white">
-                    <div className="flex items-center justify-center size-8 rounded bg-primary/20 text-primary">
-                        <span className="material-symbols-outlined text-[20px] font-icon">restaurant_menu</span>
-                    </div>
-                    <Link href="/" className="text-white text-lg font-bold tracking-[0.1em] uppercase font-display">
-                        DiFine
-                    </Link>
-                </div>
+                <Link href="/" className="flex items-center">
+                    <Image src="/difine/images/difine-logo.svg" alt="DiFine" width={36} height={36} />
+                </Link>
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-10">
@@ -95,6 +91,7 @@ export function Navbar() {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </motion.nav>
+        </nav>
+        </>
     );
 }

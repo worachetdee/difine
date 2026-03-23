@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 
 
@@ -83,14 +83,46 @@ const restaurants = [
     }
 ];
 
+function SkeletonCard() {
+    return (
+        <div className="flex flex-col bg-surface-dark rounded-xl overflow-hidden border border-white/5 shadow-2xl shadow-black/50 animate-pulse">
+            <div className="aspect-[4/3] w-full bg-white/5" />
+            <div className="p-6 flex flex-col flex-1 gap-4">
+                <div className="flex justify-between items-start">
+                    <div className="h-6 w-40 bg-white/5 rounded" />
+                    <div className="h-6 w-14 bg-white/5 rounded" />
+                </div>
+                <div className="space-y-2">
+                    <div className="h-3 w-full bg-white/5 rounded" />
+                    <div className="h-3 w-3/4 bg-white/5 rounded" />
+                </div>
+                <div className="mt-auto flex flex-col gap-4">
+                    <div className="flex items-center gap-4 border-t border-white/5 pt-4">
+                        <div className="h-3 w-20 bg-white/5 rounded" />
+                        <div className="h-3 w-28 bg-white/5 rounded" />
+                    </div>
+                    <div className="h-11 w-full bg-white/5 rounded-lg" />
+                </div>
+            </div>
+        </div>
+    );
+}
+
 export default function RestaurantsPage() {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setLoading(false), 800);
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <div className="bg-background-dark font-display min-h-screen flex flex-col antialiased text-white selection:bg-primary selection:text-white pt-20">
             <Navbar />
 
-            <div className="flex flex-1 overflow-hidden">
+            <div className="flex flex-1">
                 {/* Sidebar Filters */}
-                <aside className="hidden lg:flex flex-col w-72 h-[calc(100vh-80px)] overflow-y-auto border-r border-white/10 bg-background-dark p-6 sticky top-20">
+                <aside className="hidden lg:flex flex-col w-72 border-r border-white/10 bg-background-dark p-6 sticky top-20 self-start">
                     <div className="flex flex-col gap-8">
                         <div>
                             <h1 className="text-white text-lg font-display font-medium tracking-wide mb-1">Refine Search</h1>
@@ -140,7 +172,7 @@ export default function RestaurantsPage() {
                 </aside>
 
                 {/* Main Content */}
-                <main className="flex-1 flex flex-col bg-background-dark overflow-y-auto h-[calc(100vh-80px)]">
+                <main className="flex-1 flex flex-col bg-background-dark">
                     <div className="max-w-[1400px] w-full mx-auto p-4 md:p-8 lg:p-12">
                         {/* Page Header */}
                         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 border-b border-white/5 pb-6">
@@ -158,12 +190,11 @@ export default function RestaurantsPage() {
 
                         {/* Restaurant Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                            {restaurants.map((rest) => (
-                                <motion.div
+                            {loading ? (
+                                Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
+                            ) : restaurants.map((rest) => (
+                                <div
                                     key={rest.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
                                     className="group flex flex-col bg-surface-dark rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 hover:-translate-y-1 transition-all duration-300 shadow-2xl shadow-black/50"
                                 >
                                     <div className="relative aspect-[4/3] w-full overflow-hidden">
@@ -225,9 +256,10 @@ export default function RestaurantsPage() {
                                             </Link>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
+
 
                         {/* Pagination / Load More */}
                         <div className="mt-12 flex justify-center pb-8">

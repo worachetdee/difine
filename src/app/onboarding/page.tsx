@@ -41,12 +41,9 @@ export default function OnboardingPage() {
 
             {/* Header */}
             <header className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center bg-background-dark/80 backdrop-blur-sm border-b border-white/5">
-                <div className="flex items-center gap-2">
-                    <div className="flex items-center justify-center size-6 rounded bg-primary/20 text-primary">
-                        <span className="material-symbols-outlined text-[14px] font-icon">restaurant_menu</span>
-                    </div>
-                    <span className="text-sm font-bold tracking-[0.1em] uppercase">DiFine</span>
-                </div>
+                <Link href="/" className="flex items-center">
+                    <Image src="/difine/images/difine-logo.svg" alt="DiFine" width={28} height={28} />
+                </Link>
                 <div className="text-xs font-medium text-gray-500 uppercase tracking-widest">
                     Step {step} of 6
                 </div>

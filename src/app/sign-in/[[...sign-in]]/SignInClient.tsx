@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function SignInClient() {
@@ -15,6 +16,7 @@ export default function SignInClient() {
         <div className="min-h-screen flex items-center justify-center bg-background-dark font-display text-white px-4">
             <div className="w-full max-w-md">
                 <div className="text-center mb-8">
+                    <Link href="/"><Image src="/difine/images/difine-logo.svg" alt="DiFine" width={48} height={48} className="mx-auto mb-6" /></Link>
                     <h1 className="text-3xl font-light uppercase tracking-tight text-white mb-2">Welcome Back</h1>
                     <p className="text-gray-400 font-light tracking-wide text-sm">Sign in to access your exclusive dining privileges</p>
                 </div>

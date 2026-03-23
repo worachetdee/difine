@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function PartnerDashboardLayout({
@@ -27,10 +28,8 @@ export default function PartnerDashboardLayout({
             <aside className="w-64 border-r border-white/10 bg-surface-dark flex flex-col fixed h-full z-40">
                 <div className="h-16 flex items-center px-6 border-b border-white/10">
                     <Link href="/" className="flex items-center gap-2">
-                        <div className="flex items-center justify-center size-8 rounded bg-primary/20 text-primary">
-                            <span className="material-symbols-outlined text-[20px] font-icon">restaurant_menu</span>
-                        </div>
-                        <span className="text-white text-lg font-bold tracking-[0.1em] uppercase">DiFine <span className="text-[10px] text-primary align-top">Partner</span></span>
+                        <Image src="/difine/images/difine-logo.svg" alt="DiFine" width={36} height={36} />
+                        <span className="text-[10px] text-primary font-bold uppercase tracking-[0.1em] align-top">Partner</span>
                     </Link>
                 </div>
 

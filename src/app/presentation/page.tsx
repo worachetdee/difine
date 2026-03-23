@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/Navbar";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PresentationPage() {
     return (
@@ -23,6 +24,7 @@ export default function PresentationPage() {
                         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black" />
                     </div>
                     <div className="relative z-10 space-y-6">
+                        <Image src="/difine/images/difine-logo.svg" alt="DiFine" width={80} height={80} className="mx-auto" />
                         <h1 className="text-7xl font-light uppercase tracking-tight">
                             DiFine
                         </h1>
@@ -40,7 +42,7 @@ export default function PresentationPage() {
                 <div className="aspect-video w-full bg-neutral-900 relative overflow-hidden border border-gray-800 shadow-2xl p-16 flex flex-col">
                     <div className="flex items-center justify-between mb-12 border-b border-gray-800 pb-6">
                         <h2 className="text-4xl text-white font-light uppercase tracking-tight">Agenda</h2>
-                        <span className="text-primary text-sm font-bold tracking-widest uppercase">DiFine</span>
+                        <Image src="/difine/images/difine-logo.svg" alt="DiFine" width={28} height={28} />
                     </div>
                     <ul className="space-y-6 text-2xl text-gray-300 font-light flex-1">
                         <li className="flex items-center gap-4">

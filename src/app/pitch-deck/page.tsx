@@ -37,7 +37,7 @@ function TitleSlide() {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/85 to-black" />
             </div>
             <div className="relative z-10 text-center px-6">
-                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-8">
+                <motion.div initial="hidden" animate="visible" className="space-y-8">
                     <motion.p variants={fadeUp} custom={0} className="text-primary text-xs font-bold uppercase tracking-[0.3em]">
                         Investor Presentation
                     </motion.p>
@@ -323,7 +323,7 @@ function RoadmapSlide() {
 
                 <div className="grid md:grid-cols-4 gap-0 relative">
                     {/* Connecting line */}
-                    <div className="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-[2px] bg-gradient-to-r from-primary/20 via-primary/50 to-primary" />
+                    <div className="hidden md:block absolute top-[0.5rem] left-[12.5%] right-[12.5%] h-[2px] bg-gradient-to-r from-primary/20 via-primary/50 to-primary" />
 
                     {[
                         { phase: "Phase 1", title: "Foundation", year: "2026", desc: "Manual 'White Glove' beta for 300 members in Minato/Ginza to train AI datasets.", members: "300" },
@@ -643,8 +643,8 @@ function AskSlide() {
             <div className="relative z-10 text-center px-6">
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
                     <motion.div variants={fadeUp} custom={0} className="mb-8">
-                        <div className="size-16 bg-primary/20 rounded-full flex items-center justify-center text-primary mx-auto mb-8">
-                            <span className="material-symbols-outlined text-3xl">restaurant_menu</span>
+                        <div className="mx-auto mb-8">
+                            <Image src="/difine/images/difine-logo.svg" alt="DiFine" width={64} height={64} className="mx-auto" />
                         </div>
                         <h2 className="text-5xl md:text-7xl font-light mb-4">DiFine</h2>
                         <div className="h-[2px] w-16 bg-primary mx-auto mb-6" />

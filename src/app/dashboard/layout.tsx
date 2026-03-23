@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function DashboardLayout({
@@ -24,11 +25,8 @@ export default function DashboardLayout({
             {/* Dashboard Header */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-background-dark/85 backdrop-blur-md border-b border-white/5">
                 <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
-                    <Link href="/" className="flex items-center gap-2">
-                        <div className="flex items-center justify-center size-8 rounded bg-primary/20 text-primary">
-                            <span className="material-symbols-outlined text-[20px] font-icon">restaurant_menu</span>
-                        </div>
-                        <span className="text-white text-lg font-bold tracking-[0.1em] uppercase">DiFine</span>
+                    <Link href="/" className="flex items-center">
+                        <Image src="/difine/images/difine-logo.svg" alt="DiFine" width={36} height={36} />
                     </Link>
 
                     <div className="flex items-center gap-8">
