@@ -1,9 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useState, useEffect, useCallback } from "react";
 
 const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -16,9 +15,9 @@ const fadeUp = {
 
 function SlideWrapper({ children, className = "" }: { children: React.ReactNode; className?: string }) {
     return (
-        <section className={`min-h-screen flex items-center justify-center px-6 py-24 ${className}`}>
+        <div className={`h-screen w-screen flex items-center justify-center px-6 overflow-hidden ${className}`}>
             <div className="max-w-[1200px] w-full mx-auto">{children}</div>
-        </section>
+        </div>
     );
 }
 
@@ -31,7 +30,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 // Slide 1: Hero / Title
 function TitleSlide() {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="relative h-screen w-screen flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0">
                 <Image src="/difine/images/hero.png" alt="Background" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/85 to-black" />
@@ -59,7 +58,7 @@ function TitleSlide() {
             <div className="absolute bottom-8 left-0 w-full text-center z-10">
                 <p className="text-[10px] text-gray-600 uppercase tracking-widest">Confidential &amp; Proprietary</p>
             </div>
-        </section>
+        </div>
     );
 }
 
@@ -67,7 +66,7 @@ function TitleSlide() {
 function ProblemSlide() {
     return (
         <SlideWrapper className="bg-background-dark">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+            <motion.div initial="hidden" animate="visible">
                 <motion.div variants={fadeUp} custom={0}>
                     <SectionLabel>The Problem</SectionLabel>
                     <h2 className="text-4xl md:text-5xl font-light leading-tight mb-4">
@@ -128,7 +127,7 @@ function ProblemSlide() {
 function SolutionSlide() {
     return (
         <SlideWrapper className="bg-surface-dark">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+            <motion.div initial="hidden" animate="visible">
                 <motion.div variants={fadeUp} custom={0}>
                     <SectionLabel>The Solution</SectionLabel>
                     <h2 className="text-4xl md:text-5xl font-light leading-tight mb-2">
@@ -183,7 +182,7 @@ function SolutionSlide() {
 function MarketSlide() {
     return (
         <SlideWrapper className="bg-background-dark">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+            <motion.div initial="hidden" animate="visible">
                 <motion.div variants={fadeUp} custom={0}>
                     <SectionLabel>Market Opportunity</SectionLabel>
                     <h2 className="text-4xl md:text-5xl font-light leading-tight mb-16">
@@ -257,11 +256,102 @@ function MarketSlide() {
     );
 }
 
-// Slide 5: Operational Plan
+// Slide 5: Pricing Tiers
+function TiersSlide() {
+    const tiers = [
+        {
+            name: "Silver",
+            tagline: "Smart Curation",
+            price: "¥45,000",
+            features: [
+                "1 Michelin dinner/month",
+                "AI-curated matching",
+                "Standard course included",
+                "Flexible cancel (1 week)",
+                "DiFine gourmet magazine",
+            ],
+        },
+        {
+            name: "Gold",
+            tagline: "Access & Exploration",
+            price: "¥70,000",
+            featured: true,
+            features: [
+                "Premium course included",
+                "Choose from multiple options",
+                "Chef's table invitations",
+                "Signature gift at venue",
+                "Cancel 3 days prior",
+            ],
+        },
+        {
+            name: "Diamond",
+            tagline: "Bespoke Hospitality",
+            price: "¥120,000",
+            features: [
+                "High-end course included",
+                "Priority weekend seating",
+                "Limousine service",
+                "Bouquets & arrangements",
+                "Concierge-level care",
+            ],
+        },
+    ];
+
+    return (
+        <SlideWrapper className="bg-surface-dark">
+            <motion.div initial="hidden" animate="visible">
+                <motion.div variants={fadeUp} custom={0} className="text-center mb-16">
+                    <SectionLabel>Pricing Tiers</SectionLabel>
+                    <h2 className="text-4xl md:text-5xl font-light leading-tight">
+                        Three Tiers of <span className="text-primary">Luxury</span>
+                    </h2>
+                </motion.div>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                    {tiers.map((tier, i) => (
+                        <motion.div
+                            key={tier.name}
+                            variants={fadeUp}
+                            custom={i + 1}
+                            className={`relative rounded-lg p-8 flex flex-col ${
+                                tier.featured
+                                    ? "bg-primary/10 border-2 border-primary"
+                                    : "bg-background-dark border border-white/10"
+                            }`}
+                        >
+                            {tier.featured && (
+                                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-black text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">
+                                    Most Popular
+                                </span>
+                            )}
+                            <p className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-1">{tier.name}</p>
+                            <p className="text-gray-400 text-sm mb-6">{tier.tagline}</p>
+                            <div className="mb-8">
+                                <span className="text-white text-4xl font-light">{tier.price}</span>
+                                <span className="text-gray-500 text-sm"> /month</span>
+                            </div>
+                            <ul className="space-y-3 flex-1">
+                                {tier.features.map((f) => (
+                                    <li key={f} className="flex items-start gap-3 text-sm">
+                                        <span className="material-symbols-outlined text-primary text-base font-icon mt-0.5">check</span>
+                                        <span className="text-gray-300">{f}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </motion.div>
+                    ))}
+                </div>
+            </motion.div>
+        </SlideWrapper>
+    );
+}
+
+// Slide 6: Operational Plan
 function OperationalSlide() {
     return (
         <SlideWrapper className="bg-surface-dark">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+            <motion.div initial="hidden" animate="visible">
                 <motion.div variants={fadeUp} custom={0}>
                     <SectionLabel>Operational Plan</SectionLabel>
                     <h2 className="text-4xl md:text-5xl font-light leading-tight mb-16">
@@ -313,7 +403,7 @@ function OperationalSlide() {
 function RoadmapSlide() {
     return (
         <SlideWrapper className="bg-background-dark">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+            <motion.div initial="hidden" animate="visible">
                 <motion.div variants={fadeUp} custom={0}>
                     <SectionLabel>Roadmap</SectionLabel>
                     <h2 className="text-4xl md:text-5xl font-light leading-tight mb-16">
@@ -351,7 +441,7 @@ function RoadmapSlide() {
 function MarketingSlide() {
     return (
         <SlideWrapper className="bg-surface-dark">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+            <motion.div initial="hidden" animate="visible">
                 <motion.div variants={fadeUp} custom={0}>
                     <SectionLabel>Marketing Strategy</SectionLabel>
                     <h2 className="text-4xl md:text-5xl font-light leading-tight mb-16">
@@ -414,7 +504,7 @@ function MarketingSlide() {
 function BusinessModelSlide() {
     return (
         <SlideWrapper className="bg-background-dark">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+            <motion.div initial="hidden" animate="visible">
                 <motion.div variants={fadeUp} custom={0}>
                     <SectionLabel>Business Model</SectionLabel>
                     <h2 className="text-4xl md:text-5xl font-light leading-tight mb-16">
@@ -464,11 +554,11 @@ function BusinessModelSlide() {
     );
 }
 
-// Slide 9: Financials
+// Slide 9a: Financial Strength — Metrics
 function FinancialsSlide() {
     return (
         <SlideWrapper className="bg-surface-dark">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+            <motion.div initial="hidden" animate="visible">
                 <motion.div variants={fadeUp} custom={0}>
                     <SectionLabel>Financial Strength</SectionLabel>
                     <h2 className="text-4xl md:text-5xl font-light leading-tight mb-16">
@@ -476,7 +566,7 @@ function FinancialsSlide() {
                     </h2>
                 </motion.div>
 
-                <div className="grid md:grid-cols-3 gap-8 mb-16">
+                <div className="grid md:grid-cols-3 gap-8">
                     {[
                         {
                             title: "Profitability",
@@ -508,9 +598,25 @@ function FinancialsSlide() {
                         </motion.div>
                     ))}
                 </div>
+            </motion.div>
+        </SlideWrapper>
+    );
+}
+
+// Slide 9b: Financial Strength — Revenue Projections
+function RevenueSlide() {
+    return (
+        <SlideWrapper className="bg-surface-dark">
+            <motion.div initial="hidden" animate="visible">
+                <motion.div variants={fadeUp} custom={0}>
+                    <SectionLabel>Financial Strength</SectionLabel>
+                    <h2 className="text-4xl md:text-5xl font-light leading-tight mb-16">
+                        Revenue <span className="text-primary">Projections</span>
+                    </h2>
+                </motion.div>
 
                 {/* Revenue Chart */}
-                <motion.div variants={fadeUp} custom={4} className="bg-white/[0.02] border border-white/5 rounded-lg p-8">
+                <motion.div variants={fadeUp} custom={1} className="bg-white/[0.02] border border-white/5 rounded-lg p-8">
                     <p className="text-xs text-gray-500 uppercase tracking-widest mb-8 font-bold">Revenue Growth: $2M → $25M</p>
                     <div className="flex items-end justify-between gap-4 h-48">
                         {[
@@ -533,7 +639,7 @@ function FinancialsSlide() {
                 </motion.div>
 
                 {/* Scenario */}
-                <motion.div variants={fadeUp} custom={5} className="grid grid-cols-3 gap-6 mt-8">
+                <motion.div variants={fadeUp} custom={2} className="grid grid-cols-3 gap-6 mt-8">
                     {[
                         { label: "Worst Case", value: "< $7M", color: "text-gray-500" },
                         { label: "Base Case", value: "~$9M", color: "text-white" },
@@ -550,7 +656,99 @@ function FinancialsSlide() {
     );
 }
 
-// Slide 10: Why DiFine Wins
+// Slide 10: Income Statement
+function IncomeStatementSlide() {
+    const years = [
+        {
+            year: "2026", revenue: "$2.09M", cogs: "(1.52M)", gross: "$571K", grossMargin: "27.3%",
+            opex: "(670K)", ebitda: "-$99K", ebit: "-$183K", ebitMargin: "-8.7%",
+            tax: "—", net: "-$183K", netMargin: "-8.7%", negative: true,
+        },
+        {
+            year: "2027", revenue: "$5.13M", cogs: "(3.48M)", gross: "$1.65M", grossMargin: "32.1%",
+            opex: "(835K)", ebitda: "$811K", ebit: "$703K", ebitMargin: "13.7%",
+            tax: "(114K)", net: "$588K", netMargin: "11.5%",
+        },
+        {
+            year: "2028", revenue: "$9.23M", cogs: "(6.18M)", gross: "$3.05M", grossMargin: "33.1%",
+            opex: "(1.02M)", ebitda: "$2.04M", ebit: "$1.91M", ebitMargin: "20.7%",
+            tax: "(421K)", net: "$1.49M", netMargin: "16.2%",
+        },
+        {
+            year: "2029", revenue: "$16.16M", cogs: "(10.69M)", gross: "$5.47M", grossMargin: "33.8%",
+            opex: "(1.34M)", ebitda: "$4.13M", ebit: "$3.99M", ebitMargin: "24.7%",
+            tax: "(877K)", net: "$3.11M", netMargin: "19.2%",
+        },
+        {
+            year: "2030", revenue: "$25.45M", cogs: "(16.74M)", gross: "$8.71M", grossMargin: "34.2%",
+            opex: "(1.47M)", ebitda: "$7.24M", ebit: "$7.09M", ebitMargin: "27.8%",
+            tax: "(1.56M)", net: "$5.53M", netMargin: "21.7%",
+        },
+    ];
+
+    return (
+        <SlideWrapper className="bg-background-dark">
+            <motion.div initial="hidden" animate="visible">
+                <motion.div variants={fadeUp} custom={0}>
+                    <SectionLabel>Financial Strength</SectionLabel>
+                    <h2 className="text-4xl md:text-5xl font-light leading-tight mb-12">
+                        Income <span className="text-primary">Statement</span>
+                    </h2>
+                </motion.div>
+
+                <div className="grid grid-cols-5 gap-4">
+                    {years.map((y, i) => (
+                        <motion.div
+                            key={y.year}
+                            variants={fadeUp}
+                            custom={i + 1}
+                            className={`bg-surface-dark border rounded-lg overflow-hidden ${y.year === "2030" ? "border-primary/50" : "border-white/10"}`}
+                        >
+                            <div className={`px-4 py-3 text-center border-b ${y.year === "2030" ? "border-primary/30 bg-primary/10" : "border-white/10 bg-white/[0.02]"}`}>
+                                <p className={`text-lg font-bold ${y.year === "2030" ? "text-primary" : "text-white"}`}>{y.year}</p>
+                            </div>
+                            <div className="p-4 space-y-3">
+                                <div>
+                                    <p className="text-[10px] text-gray-500 uppercase tracking-widest">Revenue</p>
+                                    <p className="text-white font-medium text-sm">{y.revenue}</p>
+                                </div>
+                                <div>
+                                    <p className="text-[10px] text-gray-500 uppercase tracking-widest">Gross Profit</p>
+                                    <p className="text-white font-medium text-sm">{y.gross}</p>
+                                    <p className="text-primary/70 text-[10px]">{y.grossMargin} margin</p>
+                                </div>
+                                <div className="h-px bg-white/5" />
+                                <div>
+                                    <p className="text-[10px] text-gray-500 uppercase tracking-widest">EBITDA</p>
+                                    <p className={`font-medium text-sm ${y.negative ? "text-red-400" : "text-white"}`}>{y.ebitda}</p>
+                                </div>
+                                <div>
+                                    <p className="text-[10px] text-gray-500 uppercase tracking-widest">EBIT</p>
+                                    <p className={`font-medium text-sm ${y.negative ? "text-red-400" : "text-white"}`}>{y.ebit}</p>
+                                    <p className="text-primary/70 text-[10px]">{y.ebitMargin} margin</p>
+                                </div>
+                                <div className="h-px bg-white/5" />
+                                <div className={`rounded p-2 -mx-1 ${y.year === "2030" ? "bg-primary/10" : "bg-white/[0.02]"}`}>
+                                    <p className="text-[10px] text-gray-500 uppercase tracking-widest">Net Income</p>
+                                    <p className={`font-bold text-base ${y.negative ? "text-red-400" : "text-primary"}`}>{y.net}</p>
+                                    <p className="text-primary/70 text-[10px]">{y.netMargin} margin</p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                <motion.div variants={fadeUp} custom={6} className="mt-6 text-center">
+                    <p className="text-[10px] text-gray-600 uppercase tracking-widest">
+                        All figures in USD · FX: ¥154.73/USD · Tax: 22% flat · No debt · IFRS basis
+                    </p>
+                </motion.div>
+            </motion.div>
+        </SlideWrapper>
+    );
+}
+
+// Slide 11: Why DiFine Wins
 function WhyWeWinSlide() {
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background-dark">
@@ -559,7 +757,7 @@ function WhyWeWinSlide() {
                 <div className="absolute inset-0 bg-black/80" />
             </div>
             <div className="relative z-10 max-w-[900px] mx-auto text-center px-6">
-                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+                <motion.div initial="hidden" animate="visible">
                     <motion.div variants={fadeUp} custom={0}>
                         <SectionLabel>Why DiFine Wins</SectionLabel>
                         <h2 className="text-4xl md:text-6xl font-light leading-tight mb-4">
@@ -591,7 +789,7 @@ function WhyWeWinSlide() {
 function TeamSlide() {
     return (
         <SlideWrapper className="bg-surface-dark">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+            <motion.div initial="hidden" animate="visible">
                 <motion.div variants={fadeUp} custom={0}>
                     <SectionLabel>Execution &amp; Team</SectionLabel>
                     <h2 className="text-4xl md:text-5xl font-light leading-tight mb-16">
@@ -638,10 +836,10 @@ function TeamSlide() {
 // Slide 12: CTA / Ask
 function AskSlide() {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="relative h-screen w-screen flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-surface-dark via-background-dark to-black" />
             <div className="relative z-10 text-center px-6">
-                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                <motion.div initial="hidden" animate="visible">
                     <motion.div variants={fadeUp} custom={0} className="mb-8">
                         <div className="mx-auto mb-8">
                             <Image src="/difine/images/difine-logo.svg" alt="DiFine" width={64} height={64} className="mx-auto" />
@@ -665,27 +863,225 @@ function AskSlide() {
                     </motion.div>
                 </motion.div>
             </div>
-        </section>
+        </div>
     );
 }
 
-export default function PitchDeckPage() {
+// Slide 13: Conclusion
+function ConclusionSlide() {
+    const points = [
+        {
+            label: "The Problem",
+            text: "Booking premium restaurants in Tokyo is stressful, competitive, and time-consuming for affluent diners.",
+        },
+        {
+            label: "The Solution",
+            text: "DiFine delivers curated, all-inclusive dining invitations monthly — powered by AI matching and push-based allocation.",
+        },
+        {
+            label: "The Opportunity",
+            text: "Tokyo: world's #1 foodie city, 290K+ HNWIs, $1.2B–$4.7B SAM. No integrated luxury dining subscription exists.",
+        },
+        {
+            label: "The Business",
+            text: "Asset-light, prepaid subscription model. Break-even at 375 subscribers. Profitable by Year 2, targeting $25M+ revenue by Year 5.",
+        },
+    ];
+
     return (
-        <div className="min-h-screen bg-background-dark text-white">
-            <Navbar />
-            <TitleSlide />
-            <ProblemSlide />
-            <SolutionSlide />
-            <MarketSlide />
-            <OperationalSlide />
-            <RoadmapSlide />
-            <MarketingSlide />
-            <BusinessModelSlide />
-            <FinancialsSlide />
-            <WhyWeWinSlide />
-            <TeamSlide />
-            <AskSlide />
-            <Footer />
+        <SlideWrapper className="bg-background-dark">
+            <motion.div initial="hidden" animate="visible">
+                <motion.div variants={fadeUp} custom={0}>
+                    <SectionLabel>Conclusion</SectionLabel>
+                    <h2 className="text-4xl md:text-5xl font-light leading-tight mb-16">
+                        Redefining Luxury Dining <span className="text-primary">in Tokyo</span>
+                    </h2>
+                </motion.div>
+
+                <div className="grid md:grid-cols-2 gap-6 mb-16">
+                    {points.map((item, i) => (
+                        <motion.div
+                            key={item.label}
+                            variants={fadeUp}
+                            custom={i + 1}
+                            className="bg-surface-dark border border-white/10 rounded-lg p-8"
+                        >
+                            <p className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-3">{item.label}</p>
+                            <p className="text-gray-300 text-sm leading-relaxed">{item.text}</p>
+                        </motion.div>
+                    ))}
+                </div>
+
+                <motion.div variants={fadeUp} custom={5} className="text-center">
+                    <div className="h-[2px] w-16 bg-primary mx-auto mb-8" />
+                    <p className="text-xl md:text-2xl text-white font-light italic">
+                        DiFine — Where Every Dinner is an Invitation
+                    </p>
+                </motion.div>
+            </motion.div>
+        </SlideWrapper>
+    );
+}
+
+// Slide 14: References
+function ReferencesSlide() {
+    const refsLeft = [
+        "D'Arpizio, C. et al. (2025). \"Finding a New Longevity for Luxury.\" Bain & Company.",
+        "Henley & Partners. (2025). \"World's Wealthiest Cities Report 2025.\"",
+        "Near+Far. (2025). Cities with the most Michelin-starred restaurants worldwide.",
+        "Michelin Guide. (2026). Tokyo Michelin Restaurants — the Michelin Guide Japan.",
+        "Tabelog. (2026). Japan's No. 1 Restaurant Listing and Reservation Site.",
+        "TableCheck. (2026). Reservations at Japan's Best Restaurants.",
+        "OMAKASE. (2026). Book Japan's Top Fine Dining Restaurants.",
+    ];
+    const refsRight = [
+        "Chef's Pencil. (2024). Exploring Michelin Dining Costs across 40 Countries.",
+        "Euromonitor International. (2025). Consumer Foodservice in 2024: The Big Picture.",
+        "Hiramatsu Inc. (2026). Securities Report (有価証券報告書).",
+        "Cabinet Office Japan. (2025). GDP by Prefecture, FY2022.",
+        "Food Service Industry Research Institute. (2025). Japan Foodservice Market Size.",
+        "American Express. (2026). Platinum Card Concierge & Global Dining Access.",
+        "Asher & Lyrici. (2023). Global Foodie Index — Top 10 Cities.",
+    ];
+
+    return (
+        <SlideWrapper className="bg-surface-dark">
+            <motion.div initial="hidden" animate="visible">
+                <motion.div variants={fadeUp} custom={0}>
+                    <SectionLabel>References</SectionLabel>
+                    <h2 className="text-4xl md:text-5xl font-light leading-tight mb-16">
+                        Sources &amp; <span className="text-primary">Citations</span>
+                    </h2>
+                </motion.div>
+
+                <div className="grid md:grid-cols-2 gap-12">
+                    <motion.ul variants={fadeUp} custom={1} className="space-y-4">
+                        {refsLeft.map((ref, i) => (
+                            <li key={i} className="text-gray-400 text-sm leading-relaxed pl-4 border-l-2 border-white/10">
+                                {ref}
+                            </li>
+                        ))}
+                    </motion.ul>
+                    <motion.ul variants={fadeUp} custom={2} className="space-y-4">
+                        {refsRight.map((ref, i) => (
+                            <li key={i} className="text-gray-400 text-sm leading-relaxed pl-4 border-l-2 border-white/10">
+                                {ref}
+                            </li>
+                        ))}
+                    </motion.ul>
+                </div>
+
+                <motion.div variants={fadeUp} custom={3} className="mt-16 text-center">
+                    <div className="h-[1px] w-full max-w-md mx-auto bg-white/10 mb-6" />
+                    <p className="text-gray-500 text-xs uppercase tracking-[0.2em]">
+                        EMBA Class of May 2026 · Group #75 · Otaki · Chan · Rathinasabapathy · Deeyai
+                    </p>
+                </motion.div>
+            </motion.div>
+        </SlideWrapper>
+    );
+}
+
+const slides = [
+    { component: TitleSlide, label: "Title" },
+    { component: ProblemSlide, label: "Problem" },
+    { component: SolutionSlide, label: "Solution" },
+    { component: MarketSlide, label: "Market" },
+    { component: TiersSlide, label: "Tiers" },
+    { component: OperationalSlide, label: "Operations" },
+    { component: RoadmapSlide, label: "Roadmap" },
+    { component: MarketingSlide, label: "Marketing" },
+    { component: BusinessModelSlide, label: "Business Model" },
+    { component: FinancialsSlide, label: "Financials" },
+    { component: RevenueSlide, label: "Revenue" },
+    { component: IncomeStatementSlide, label: "Income Statement" },
+    { component: WhyWeWinSlide, label: "Why We Win" },
+    { component: TeamSlide, label: "Team" },
+    { component: ConclusionSlide, label: "Conclusion" },
+    { component: ReferencesSlide, label: "References" },
+    { component: AskSlide, label: "CTA" },
+];
+
+const slideVariants = {
+    enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 80 : -80 }),
+    center: { opacity: 1, x: 0 },
+    exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -80 : 80 }),
+};
+
+export default function PitchDeckPage() {
+    const [[current, direction], setCurrent] = useState([0, 0]);
+
+    const go = useCallback((dir: number) => {
+        setCurrent(([prev]) => {
+            const next = prev + dir;
+            if (next < 0 || next >= slides.length) return [prev, 0];
+            return [next, dir];
+        });
+    }, []);
+
+    useEffect(() => {
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") {
+                e.preventDefault();
+                go(1);
+            }
+            if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+                e.preventDefault();
+                go(-1);
+            }
+        };
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [go]);
+
+    const SlideComponent = slides[current].component;
+
+    return (
+        <div className="h-screen w-screen overflow-hidden bg-background-dark text-white font-display relative select-none">
+            <AnimatePresence mode="wait" custom={direction}>
+                <motion.div
+                    key={current}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="h-screen w-screen"
+                >
+                    <SlideComponent />
+                </motion.div>
+            </AnimatePresence>
+
+            {/* Controls */}
+            <div className="fixed bottom-6 left-0 right-0 z-50 flex items-center justify-center gap-6">
+                <button
+                    onClick={() => go(-1)}
+                    disabled={current === 0}
+                    className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+                >
+                    <span className="material-symbols-outlined text-[18px] font-icon">chevron_left</span>
+                </button>
+                <span className="text-xs text-gray-500 uppercase tracking-widest font-bold tabular-nums">
+                    {current + 1} / {slides.length}
+                </span>
+                <button
+                    onClick={() => go(1)}
+                    disabled={current === slides.length - 1}
+                    className="size-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+                >
+                    <span className="material-symbols-outlined text-[18px] font-icon">chevron_right</span>
+                </button>
+            </div>
+
+            {/* Progress bar */}
+            <div className="fixed top-0 left-0 right-0 z-50 h-[2px] bg-white/5">
+                <motion.div
+                    className="h-full bg-primary"
+                    animate={{ width: `${((current + 1) / slides.length) * 100}%` }}
+                    transition={{ duration: 0.4 }}
+                />
+            </div>
         </div>
     );
 }
