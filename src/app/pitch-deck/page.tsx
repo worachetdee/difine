@@ -867,7 +867,106 @@ function AskSlide() {
     );
 }
 
-// Slide 13: Conclusion
+// Slide 13: Live Product Demo
+function DemoSlide() {
+    const [showDemo, setShowDemo] = useState(false);
+
+    const pages = [
+        { label: "Homepage", path: "/difine", icon: "home" },
+        { label: "Restaurants", path: "/difine/restaurants", icon: "restaurant" },
+        { label: "Pricing", path: "/difine/pricing", icon: "payments" },
+        { label: "Onboarding", path: "/difine/onboarding", icon: "person_add" },
+        { label: "Dashboard", path: "/difine/dashboard", icon: "dashboard" },
+        { label: "Partner Portal", path: "/difine/partner/dashboard", icon: "storefront" },
+    ];
+
+    return (
+        <div className="h-screen w-screen flex flex-col bg-background-dark overflow-hidden">
+            {!showDemo ? (
+                <div className="flex-1 flex items-center justify-center px-6">
+                    <motion.div initial="hidden" animate="visible" className="max-w-[1200px] w-full">
+                        <motion.div variants={fadeUp} custom={0} className="text-center mb-12">
+                            <SectionLabel>Product Demo</SectionLabel>
+                            <h2 className="text-4xl md:text-5xl font-light leading-tight mb-4">
+                                See DiFine <span className="text-primary">in Action</span>
+                            </h2>
+                            <p className="text-gray-400 text-lg font-light">A walkthrough of the live platform</p>
+                        </motion.div>
+
+                        <motion.div variants={fadeUp} custom={1} className="grid grid-cols-3 gap-4 mb-12">
+                            {pages.map((page) => (
+                                <div
+                                    key={page.label}
+                                    className="bg-surface-dark border border-white/10 rounded-lg p-5 flex items-center gap-4"
+                                >
+                                    <div className="size-10 rounded bg-primary/10 flex items-center justify-center shrink-0">
+                                        <span className="material-symbols-outlined text-primary text-xl font-icon">{page.icon}</span>
+                                    </div>
+                                    <div>
+                                        <p className="text-white text-sm font-medium">{page.label}</p>
+                                        <p className="text-gray-500 text-xs">{page.path}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </motion.div>
+
+                        <motion.div variants={fadeUp} custom={2} className="text-center">
+                            <button
+                                onClick={() => setShowDemo(true)}
+                                className="inline-flex items-center gap-3 bg-primary text-black px-10 py-4 text-sm uppercase tracking-[0.2em] font-bold hover:bg-primary-hover transition-colors rounded"
+                            >
+                                <span className="material-symbols-outlined text-xl font-icon">play_arrow</span>
+                                Launch Demo
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                </div>
+            ) : (
+                <div className="flex-1 flex flex-col p-4 pt-2">
+                    {/* Browser Chrome */}
+                    <div className="bg-[#1a1a1a] rounded-t-xl border border-white/10 border-b-0 px-4 py-2.5 flex items-center gap-3">
+                        <div className="flex gap-1.5">
+                            <button onClick={() => setShowDemo(false)} className="size-3 rounded-full bg-red-500 hover:bg-red-400 transition-colors" />
+                            <div className="size-3 rounded-full bg-yellow-500" />
+                            <div className="size-3 rounded-full bg-green-500" />
+                        </div>
+                        <div className="flex-1 flex items-center justify-center">
+                            <div className="bg-white/5 rounded-md px-4 py-1 text-xs text-gray-400 flex items-center gap-2 max-w-md w-full">
+                                <span className="material-symbols-outlined text-[14px] font-icon text-gray-500">lock</span>
+                                difine.com
+                            </div>
+                        </div>
+                        <div className="flex gap-3">
+                            {pages.map((page) => (
+                                <button
+                                    key={page.label}
+                                    onClick={() => {
+                                        const iframe = document.getElementById("demo-iframe") as HTMLIFrameElement;
+                                        if (iframe) iframe.src = page.path;
+                                    }}
+                                    className="text-[10px] text-gray-500 hover:text-primary uppercase tracking-widest transition-colors font-bold"
+                                >
+                                    {page.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                    {/* iframe */}
+                    <div className="flex-1 rounded-b-xl border border-white/10 overflow-hidden bg-black">
+                        <iframe
+                            id="demo-iframe"
+                            src="/difine"
+                            className="w-full h-full border-0"
+                            title="DiFine Demo"
+                        />
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
+// Slide 14: Conclusion
 function ConclusionSlide() {
     const points = [
         {
@@ -997,6 +1096,7 @@ const slides = [
     { component: IncomeStatementSlide, label: "Income Statement" },
     { component: WhyWeWinSlide, label: "Why We Win" },
     { component: TeamSlide, label: "Team" },
+    { component: DemoSlide, label: "Demo" },
     { component: ConclusionSlide, label: "Conclusion" },
     { component: ReferencesSlide, label: "References" },
     { component: AskSlide, label: "CTA" },
