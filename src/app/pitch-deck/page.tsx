@@ -37,20 +37,23 @@ function TitleSlide() {
             </div>
             <div className="relative z-10 text-center px-6">
                 <motion.div initial="hidden" animate="visible" className="space-y-8">
-                    <motion.p variants={fadeUp} custom={0} className="text-primary text-xs font-bold uppercase tracking-[0.3em]">
+                    <motion.div variants={fadeUp} custom={0} className="mx-auto">
+                        <Image src="/difine/images/difine-logo.svg" alt="DiFine" width={56} height={56} className="mx-auto" />
+                    </motion.div>
+                    <motion.p variants={fadeUp} custom={1} className="text-primary text-xs font-bold uppercase tracking-[0.3em]">
                         Investor Presentation
                     </motion.p>
-                    <motion.h1 variants={fadeUp} custom={1} className="text-7xl md:text-9xl font-light uppercase tracking-tight">
+                    <motion.h1 variants={fadeUp} custom={2} className="text-7xl md:text-9xl font-light uppercase tracking-tight">
                         DiFine
                     </motion.h1>
-                    <motion.div variants={fadeUp} custom={2} className="h-[2px] w-20 bg-primary mx-auto" />
-                    <motion.p variants={fadeUp} custom={3} className="text-xl md:text-2xl text-gray-300 tracking-[0.15em] uppercase font-light">
+                    <motion.div variants={fadeUp} custom={3} className="h-[2px] w-20 bg-primary mx-auto" />
+                    <motion.p variants={fadeUp} custom={4} className="text-xl md:text-2xl text-gray-300 tracking-[0.15em] uppercase font-light">
                         Luxury Dining, Seamlessly Delivered
                     </motion.p>
-                    <motion.p variants={fadeUp} custom={4} className="text-base text-gray-400 font-light max-w-lg mx-auto">
+                    <motion.p variants={fadeUp} custom={5} className="text-base text-gray-400 font-light max-w-lg mx-auto">
                         Tokyo&apos;s First Luxury Dining Subscription Platform
                     </motion.p>
-                    <motion.div variants={fadeUp} custom={5} className="inline-block mt-4 border border-primary/40 px-8 py-3 text-primary text-sm uppercase tracking-widest">
+                    <motion.div variants={fadeUp} custom={6} className="inline-block mt-4 border border-primary/40 px-8 py-3 text-primary text-sm uppercase tracking-widest">
                         Seeking $1.125M Seed Investment
                     </motion.div>
                 </motion.div>
@@ -69,19 +72,23 @@ function ProblemSlide() {
             <motion.div initial="hidden" animate="visible">
                 <motion.div variants={fadeUp} custom={0}>
                     <SectionLabel>The Problem</SectionLabel>
-                    <h2 className="text-4xl md:text-5xl font-light leading-tight mb-4">
+                    <h2 className="text-4xl md:text-5xl font-light leading-tight mb-16">
                         Premium dining should be an escape —<br />
                         <span className="text-primary">yet getting there is anything but.</span>
                     </h2>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-12 mt-16">
-                    <motion.div variants={fadeUp} custom={1} className="space-y-8">
-                        <h3 className="text-lg font-bold uppercase tracking-widest text-white/80 flex items-center gap-3">
-                            <span className="material-symbols-outlined text-primary">person</span>
-                            For Diners
-                        </h3>
-                        <div className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-10">
+                    <motion.div variants={fadeUp} custom={1} className="bg-white/[0.03] border border-white/5 rounded-xl overflow-hidden">
+                        <div className="relative h-52">
+                            <Image src="/difine/images/diners.avif" alt="Diners" fill className="object-cover" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                            <h3 className="absolute bottom-4 left-5 text-lg font-bold uppercase tracking-widest text-white flex items-center gap-3">
+                                <span className="material-symbols-outlined text-primary">person</span>
+                                For Diners
+                            </h3>
+                        </div>
+                        <div className="p-6 space-y-5">
                             {[
                                 { icon: "search_off", title: "Research Overload", desc: "Tokyo has 1,600+ premium restaurants, making discovery an exhausting task." },
                                 { icon: "block", title: "Booking Friction", desc: "Complex reservation forms and lottery-based systems create unnecessary barriers." },
@@ -97,12 +104,16 @@ function ProblemSlide() {
                         </div>
                     </motion.div>
 
-                    <motion.div variants={fadeUp} custom={2} className="space-y-8">
-                        <h3 className="text-lg font-bold uppercase tracking-widest text-white/80 flex items-center gap-3">
-                            <span className="material-symbols-outlined text-primary">storefront</span>
-                            For Restaurants
-                        </h3>
-                        <div className="space-y-6">
+                    <motion.div variants={fadeUp} custom={2} className="bg-white/[0.03] border border-white/5 rounded-xl overflow-hidden">
+                        <div className="relative h-52">
+                            <Image src="/difine/images/dining-scene.avif" alt="Restaurant" fill className="object-cover" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                            <h3 className="absolute bottom-4 left-5 text-lg font-bold uppercase tracking-widest text-white flex items-center gap-3">
+                                <span className="material-symbols-outlined text-primary">storefront</span>
+                                For Restaurants
+                            </h3>
+                        </div>
+                        <div className="p-6 space-y-5">
                             {[
                                 { icon: "trending_down", title: "Unpredictable Revenue", desc: "Volatile customer flow, cancellations, and no-shows undermine financial planning." },
                                 { icon: "group_off", title: "Uncontrollable Guest Quality", desc: "Attracting guests who upgrade to premium courses or fine wines remains elusive." },
@@ -136,37 +147,43 @@ function SolutionSlide() {
                     <p className="text-gray-400 text-lg mb-16">Tokyo&apos;s First Luxury Dining Subscription (LDaaS)</p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-16">
-                    <motion.div variants={fadeUp} custom={1} className="space-y-8">
-                        <h3 className="text-lg font-bold uppercase tracking-widest text-white/80">For Diners</h3>
-                        {[
-                            { icon: "calendar_month", title: "Guaranteed Monthly Dining", desc: "Pre-arranged reservations at premium restaurants every month — no research, no hassle." },
-                            { icon: "auto_awesome", title: "Curated Guest Experience", desc: "DiFine selects restaurants and tailors every visit, ensuring a consistently exceptional experience." },
-                        ].map((item) => (
-                            <div key={item.title} className="flex gap-4 items-start p-5 bg-white/[0.03] border border-white/5 rounded-lg">
-                                <span className="material-symbols-outlined text-primary text-2xl mt-0.5">{item.icon}</span>
-                                <div>
-                                    <p className="text-white font-medium mb-1">{item.title}</p>
-                                    <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                <div className="grid md:grid-cols-3 gap-12">
+                    <div className="md:col-span-2 grid md:grid-cols-2 gap-8">
+                        <motion.div variants={fadeUp} custom={1} className="space-y-8">
+                            <h3 className="text-lg font-bold uppercase tracking-widest text-white/80">For Diners</h3>
+                            {[
+                                { icon: "calendar_month", title: "Guaranteed Monthly Dining", desc: "Pre-arranged reservations at premium restaurants every month — no research, no hassle." },
+                                { icon: "auto_awesome", title: "Curated Guest Experience", desc: "DiFine selects restaurants and tailors every visit, ensuring a consistently exceptional experience." },
+                            ].map((item) => (
+                                <div key={item.title} className="flex gap-4 items-start p-5 bg-white/[0.03] border border-white/5 rounded-lg">
+                                    <span className="material-symbols-outlined text-primary text-2xl mt-0.5">{item.icon}</span>
+                                    <div>
+                                        <p className="text-white font-medium mb-1">{item.title}</p>
+                                        <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </motion.div>
+                            ))}
+                        </motion.div>
 
-                    <motion.div variants={fadeUp} custom={2} className="space-y-8">
-                        <h3 className="text-lg font-bold uppercase tracking-widest text-white/80">For Restaurants</h3>
-                        {[
-                            { icon: "groups", title: "Steady Stream of Quality Guests", desc: "A consistent flow of high-intent members. Cancelled seats are automatically filled — keeping every table occupied." },
-                            { icon: "shield", title: "Revenue Protection", desc: "Course fees collected upfront. Full compensation for cancellations and no-shows, securing predictable revenue." },
-                        ].map((item) => (
-                            <div key={item.title} className="flex gap-4 items-start p-5 bg-white/[0.03] border border-white/5 rounded-lg">
-                                <span className="material-symbols-outlined text-primary text-2xl mt-0.5">{item.icon}</span>
-                                <div>
-                                    <p className="text-white font-medium mb-1">{item.title}</p>
-                                    <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                        <motion.div variants={fadeUp} custom={2} className="space-y-8">
+                            <h3 className="text-lg font-bold uppercase tracking-widest text-white/80">For Restaurants</h3>
+                            {[
+                                { icon: "groups", title: "Steady Stream of Quality Guests", desc: "A consistent flow of high-intent members. Cancelled seats are automatically filled — keeping every table occupied." },
+                                { icon: "shield", title: "Revenue Protection", desc: "Course fees collected upfront. Full compensation for cancellations and no-shows, securing predictable revenue." },
+                            ].map((item) => (
+                                <div key={item.title} className="flex gap-4 items-start p-5 bg-white/[0.03] border border-white/5 rounded-lg">
+                                    <span className="material-symbols-outlined text-primary text-2xl mt-0.5">{item.icon}</span>
+                                    <div>
+                                        <p className="text-white font-medium mb-1">{item.title}</p>
+                                        <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </motion.div>
+                    </div>
+
+                    <motion.div variants={fadeUp} custom={3} className="relative rounded-xl overflow-hidden min-h-[300px]">
+                        <Image src="/difine/images/restaurant-luxury.avif" alt="Luxury restaurant interior" fill className="object-cover" />
                     </motion.div>
                 </div>
 
@@ -263,6 +280,7 @@ function TiersSlide() {
             name: "Silver",
             tagline: "Smart Curation",
             price: "¥45,000",
+            image: "/difine/images/tier-gold.avif",
             features: [
                 "1 Michelin dinner/month",
                 "AI-curated matching",
@@ -276,6 +294,7 @@ function TiersSlide() {
             tagline: "Access & Exploration",
             price: "¥70,000",
             featured: true,
+            image: "/difine/images/tier-silver.avif",
             features: [
                 "Premium course included",
                 "Choose from multiple options",
@@ -288,6 +307,7 @@ function TiersSlide() {
             name: "Diamond",
             tagline: "Bespoke Hospitality",
             price: "¥120,000",
+            image: "/difine/images/limousine.avif",
             features: [
                 "High-end course included",
                 "Priority weekend seating",
@@ -320,11 +340,6 @@ function TiersSlide() {
                                     : "bg-background-dark border border-white/10"
                             }`}
                         >
-                            {tier.featured && (
-                                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-black text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">
-                                    Most Popular
-                                </span>
-                            )}
                             <p className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-1">{tier.name}</p>
                             <p className="text-gray-400 text-sm mb-6">{tier.tagline}</p>
                             <div className="mb-8">
@@ -339,6 +354,11 @@ function TiersSlide() {
                                     </li>
                                 ))}
                             </ul>
+                            {tier.image && (
+                                <div className="relative rounded-lg overflow-hidden h-40 mt-6">
+                                    <Image src={tier.image} alt={tier.name} fill className="object-cover" />
+                                </div>
+                            )}
                         </motion.div>
                     ))}
                 </div>
@@ -867,7 +887,89 @@ function AskSlide() {
     );
 }
 
-// Slide 13: Conclusion
+// Slide 13: Live Product Demo
+function DemoSlide() {
+    const [showDemo, setShowDemo] = useState(false);
+
+    const pages = [
+        { label: "Homepage", path: "/difine", icon: "home" },
+        { label: "Restaurants", path: "/difine/restaurants", icon: "restaurant" },
+        { label: "Pricing", path: "/difine/pricing", icon: "payments" },
+        { label: "Onboarding", path: "/difine/onboarding", icon: "person_add" },
+        { label: "Dashboard", path: "/difine/dashboard", icon: "dashboard" },
+        { label: "Partner Portal", path: "/difine/partner/dashboard", icon: "storefront" },
+    ];
+
+    return (
+        <div className="h-screen w-screen flex flex-col bg-background-dark overflow-hidden">
+            {!showDemo ? (
+                <div className="flex-1 flex items-center justify-center px-6">
+                    <motion.div initial="hidden" animate="visible" className="max-w-[1200px] w-full">
+                        <motion.div variants={fadeUp} custom={0} className="text-center mb-12">
+                            <SectionLabel>Product Demo</SectionLabel>
+                            <h2 className="text-4xl md:text-5xl font-light leading-tight mb-4">
+                                See DiFine <span className="text-primary">in Action</span>
+                            </h2>
+                            <p className="text-gray-400 text-lg font-light">A walkthrough of the live platform</p>
+                        </motion.div>
+
+                        <motion.div variants={fadeUp} custom={1} className="text-center">
+                            <button
+                                onClick={() => setShowDemo(true)}
+                                className="inline-flex items-center gap-3 bg-primary text-black px-10 py-4 text-sm uppercase tracking-[0.2em] font-bold hover:bg-primary-hover transition-colors rounded"
+                            >
+                                <span className="material-symbols-outlined text-xl font-icon">play_arrow</span>
+                                Launch Demo
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                </div>
+            ) : (
+                <div className="flex-1 flex flex-col p-4 pt-2">
+                    {/* Browser Chrome */}
+                    <div className="bg-[#1a1a1a] rounded-t-xl border border-white/10 border-b-0 px-4 py-2.5 flex items-center gap-3">
+                        <div className="flex gap-1.5">
+                            <button onClick={() => setShowDemo(false)} className="size-3 rounded-full bg-red-500 hover:bg-red-400 transition-colors" />
+                            <div className="size-3 rounded-full bg-yellow-500" />
+                            <div className="size-3 rounded-full bg-green-500" />
+                        </div>
+                        <div className="flex-1 flex items-center justify-center">
+                            <div className="bg-white/5 rounded-md px-4 py-1 text-xs text-gray-400 flex items-center gap-2 max-w-md w-full">
+                                <span className="material-symbols-outlined text-[14px] font-icon text-gray-500">lock</span>
+                                difine.com
+                            </div>
+                        </div>
+                        <div className="flex gap-3">
+                            {pages.map((page) => (
+                                <button
+                                    key={page.label}
+                                    onClick={() => {
+                                        const iframe = document.getElementById("demo-iframe") as HTMLIFrameElement;
+                                        if (iframe) iframe.src = page.path;
+                                    }}
+                                    className="text-[10px] text-gray-500 hover:text-primary uppercase tracking-widest transition-colors font-bold"
+                                >
+                                    {page.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                    {/* iframe */}
+                    <div className="flex-1 rounded-b-xl border border-white/10 overflow-hidden bg-black">
+                        <iframe
+                            id="demo-iframe"
+                            src="/difine"
+                            className="w-full h-full border-0"
+                            title="DiFine Demo"
+                        />
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
+// Slide 14: Conclusion
 function ConclusionSlide() {
     const points = [
         {
@@ -898,13 +1000,13 @@ function ConclusionSlide() {
                     </h2>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-6 mb-16">
+                <div className="grid md:grid-cols-4 gap-6 mb-16">
                     {points.map((item, i) => (
                         <motion.div
                             key={item.label}
                             variants={fadeUp}
                             custom={i + 1}
-                            className="bg-surface-dark border border-white/10 rounded-lg p-8"
+                            className="bg-surface-dark border border-white/10 rounded-lg p-6"
                         >
                             <p className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-3">{item.label}</p>
                             <p className="text-gray-300 text-sm leading-relaxed">{item.text}</p>
@@ -912,11 +1014,14 @@ function ConclusionSlide() {
                     ))}
                 </div>
 
-                <motion.div variants={fadeUp} custom={5} className="text-center">
-                    <div className="h-[2px] w-16 bg-primary mx-auto mb-8" />
-                    <p className="text-xl md:text-2xl text-white font-light italic">
-                        DiFine — Where Every Dinner is an Invitation
-                    </p>
+                <motion.div variants={fadeUp} custom={5} className="relative rounded-xl overflow-hidden h-48">
+                    <Image src="/difine/images/plated-dish.avif" alt="Exquisite plated dish" fill className="object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
+                        <p className="text-xl md:text-2xl text-white font-light italic">
+                            DiFine — Where Every Dinner is an Invitation
+                        </p>
+                    </div>
                 </motion.div>
             </motion.div>
         </SlideWrapper>
@@ -974,7 +1079,7 @@ function ReferencesSlide() {
                 <motion.div variants={fadeUp} custom={3} className="mt-16 text-center">
                     <div className="h-[1px] w-full max-w-md mx-auto bg-white/10 mb-6" />
                     <p className="text-gray-500 text-xs uppercase tracking-[0.2em]">
-                        EMBA Class of May 2026 · Group #75 · Otaki · Chan · Rathinasabapathy · Deeyai
+                        EMBA Class of May 2026 · Otaki · Chan · Rathinasabapathy · Deeyai
                     </p>
                 </motion.div>
             </motion.div>
@@ -997,6 +1102,7 @@ const slides = [
     { component: IncomeStatementSlide, label: "Income Statement" },
     { component: WhyWeWinSlide, label: "Why We Win" },
     { component: TeamSlide, label: "Team" },
+    { component: DemoSlide, label: "Demo" },
     { component: ConclusionSlide, label: "Conclusion" },
     { component: ReferencesSlide, label: "References" },
     { component: AskSlide, label: "CTA" },
@@ -1054,7 +1160,8 @@ export default function PitchDeckPage() {
             </AnimatePresence>
 
             {/* Controls */}
-            <div className="fixed bottom-6 left-0 right-0 z-50 flex items-center justify-center gap-6">
+            {/* Controls */}
+            <div className="fixed bottom-6 right-6 z-50 flex items-center gap-4">
                 <button
                     onClick={() => go(-1)}
                     disabled={current === 0}
